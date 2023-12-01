@@ -24,10 +24,15 @@ app.get('/', (req, res) => {
   //res.sendFile(path.resolve(__dirname,'public','index.html'));
 });
 
-app.get('/factor', (req, res) => {
-   res.render('factor');
+app.get('/login', (req, res) => {
+   res.render('login');
   //res.sendFile(path.resolve(__dirname,'public','workout.html'));
 });
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+   //res.sendFile(path.resolve(__dirname,'public','workout.html'));
+ });
 
 app.post('/postal', (req, res) => {
   const city = req.body.cityName;

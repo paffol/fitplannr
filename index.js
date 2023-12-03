@@ -3,8 +3,7 @@ const app = express();
 import path from 'path';
 
 /* IMPORT DATABASE */
-import Database from '@replit/database';
-const db = new Database();
+
 
 /* ADD FOR DB - TO GET CONTENT FROM HTML*/
 import bodyParser from 'body-parser';

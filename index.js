@@ -20,9 +20,6 @@ app.get('/gyms', (req, res) => {
   });
 
 app.get('/login', (req, res) => {
-<<<<<<< Updated upstream
-    res.render('login');
-=======
     res.render('login')
   });
 
@@ -32,7 +29,6 @@ app.get('/nutrition', (req, res) => {
 
 app.get('/planner', (req, res) => {
     res.render('planner')
->>>>>>> Stashed changes
   });
 
 app.listen(port, () => {

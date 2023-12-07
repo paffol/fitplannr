@@ -15,6 +15,10 @@ app.get('/login', (req, res) => {
     res.render('login');
   });
 
+  app.get('/planner', (req, res) => {
+    res.render('planner');
+  });
+  
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });

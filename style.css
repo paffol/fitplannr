@@ -13,3 +13,11 @@
     justify-content: center;
     flex-direction: column;
 }
+
+h1{
+    color: #333
+}
+iframe{
+    width: 80%;
+    height: 500px;
+}

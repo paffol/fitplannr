@@ -4,3 +4,19 @@
     background: linear-gradient(135deg, #159677, rgb(59, 7, 71));
     padding: 10px;
 }
+.planner{
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius:10px;
+}
+.planner h2{
+  color: #002765;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+

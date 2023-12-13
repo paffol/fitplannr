@@ -15,7 +15,7 @@ function changeTab(tabName) {
 
   // Show the selected tab content and activate the button
   document.getElementById(`${tabName}Tab`).classList.add('active');
-  document.querySelector(`.tabs button:contains('${tabName.charAt(0).toUpperCase() + tabName.slice(1)}')`).classList.add('active');
+  contains('.tabs button', tabName.charAt(0).toUpperCase() + tabName.slice(1)).classList.add('active');
 }
 
 function changeDay() {

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Calorie Tracker</title>
+  <title>Calorie Counter</title>
 </head>
 <body>
   <div class="container">
-    <h1>Calorie Tracker</h1>
+    <h1>Calorie Counter</h1>
     <div class="tabs">
       <button onclick="changeTab('breakfast')">Breakfast</button>
       <button onclick="changeTab('lunch')">Lunch</button>
@@ -16,7 +16,7 @@
     </div>
     <div class="dropdown">
       <label for="daySelect">Select Day:</label>
-      <select id="daySelect" onchange="changeDay()">
+      <select id="daySelect" onchange="updateDay()">
         <option value="monday">Monday</option>
         <option value="tuesday">Tuesday</option>
         <option value="wednesday">Wednesday</option>

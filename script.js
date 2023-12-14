@@ -15,14 +15,14 @@ function changeTab(tabName) {
   document.querySelector(`.tabs button:contains('${tabName.charAt(0).toUpperCase() + tabName.slice(1)}')`).classList.add('active');
 }
 
-function changeDay() {
+function updateDay() {
   totalCaloriesBreakfast = 0;
   totalCaloriesLunch = 0;
   totalCaloriesDinner = 0;
-  updateTotalCalories('breakfast');
-  updateTotalCalories('lunch');
-  updateTotalCalories('dinner');
-  changeTab('breakfast');
+  update('breakfast');
+  update('lunch');
+  update('dinner');
+  changeTab('breakfast'); 
 }
 
 function addFood(meal) {
@@ -37,13 +37,13 @@ function addFood(meal) {
 
     if (meal === 'breakfast') {
       totalCaloriesBreakfast += calories;
-      updateTotalCalories('breakfast');
+      update('breakfast');
     } else if (meal === 'lunch') {
       totalCaloriesLunch += calories;
-      updateTotalCalories('lunch');
+      update('lunch');
     } else if (meal === 'dinner') {
       totalCaloriesDinner += calories;
-      updateTotalCalories('dinner');
+      update('dinner');
     }
 
     document.getElementById(`${meal}FoodName`).value = "";
@@ -53,7 +53,7 @@ function addFood(meal) {
   }
 }
 
-function updateTotalCalories(meal) {
+function update(meal) {
   const totalCaloriesElement = document.getElementById(`${meal}TotalCalories`);
   let totalCalories = 0;
 

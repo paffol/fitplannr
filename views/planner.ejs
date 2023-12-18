@@ -3,14 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planner</title>
+    <title>Workout Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 98%;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-<div class="container"> 
-    <div class="planner">
-        <h2>Workout Planner</h2>
-    </div>
-</div>
-    
+
+    <h2>Dynamic Workout Table</h2>
+
+    <table id="workoutTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Exercise Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><input type="text" onkeypress="handleKeyPress(event, this, 2)"></td>
+                <td><input type="text" onkeypress="handleKeyPress(event, this, 3)"></td>
+                <td><input type="text" onkeypress="handleKeyPress(event, this, 4)"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function handleKeyPress(event, element, columnIndex) {
+            if (event.key === "Enter") {
+                var table = document.getElementById("workoutTable").getElementsByTagName('tbody')[0];
+
+                // Create a new row at the end of the table
+                var newRow = table.insertRow(table.rows.length);
+
+                for (var i = 0; i < 4; i++) {
+                    var cell = newRow.insertCell(i);
+
+                    // Set value of the new row based on the input
+                    if (i === 0) {
+                        cell.innerHTML = table.rows.length;
+                    } else {
+                        var input = document.createElement("input");
+                        input.type = "text";
+                        input.setAttribute("onkeypress", "handleKeyPress(event, this, " + (i + 2) + ")");
+                        input.value = i === columnIndex - 1 ? element.value : "";
+                        cell.appendChild(input);
+                    }
+                }
+
+                // Clear the input in the current cell
+                element.value = "";
+
+                // Prevent the default behavior of the Enter key
+                event.preventDefault();
+            }
+        }
+    </script>
+
 </body>
 </html>

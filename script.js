@@ -74,3 +74,48 @@ function contains(selector, text) {
 }
 
 changeTab('breakfast');
+
+function calculateRecommendedCalories() {
+  // Retrieve user input values
+  const age = document.getElementById('age').value;
+  const weight = document.getElementById('weight').value;
+  const height = document.getElementById('height').value;
+  const gender = document.getElementById('gender').value;
+  const activity = document.getElementById('activity').value;
+
+  // Perform calculation (you may use a more sophisticated formula based on your requirements)
+  let basalMetabolicRate;
+
+  if (gender === 'male') {
+    basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age + 5;
+  } else {
+    basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age - 161;
+  }
+
+  // Adjust for activity level
+  let recommendedCalories;
+
+  switch (activity) {
+    case 'sedentary':
+      recommendedCalories = basalMetabolicRate * 1.2;
+      break;
+    case 'lightlyActive':
+      recommendedCalories = basalMetabolicRate * 1.375;
+      break;
+    case 'moderatelyActive':
+      recommendedCalories = basalMetabolicRate * 1.55;
+      break;
+    case 'veryActive':
+      recommendedCalories = basalMetabolicRate * 1.725;
+      break;
+    case 'superActive':
+      recommendedCalories = basalMetabolicRate * 1.9;
+      break;
+    default:
+      recommendedCalories = basalMetabolicRate;
+  }
+
+  // Display the result
+  const resultElement = document.getElementById('recommendedCalories');
+  resultElement.textContent = `Your recommended daily calories: ${recommendedCalories.toFixed(2)} calories`;
+}

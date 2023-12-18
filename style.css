@@ -115,3 +115,63 @@ tfoot {
   margin-top: 20px;
   color: #333;
 }
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #333;
+}
+
+.tabs, .user-info {
+  margin-bottom: 20px;
+}
+
+.tabs button, .user-info button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tabs button:hover, .user-info button:hover {
+  background-color: #45a049;
+}
+
+.dropdown, .user-info label, .user-info select, .user-info input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.user-info p {
+  margin-top: 10px;
+  font-weight: bold;
+}

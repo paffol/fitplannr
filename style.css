@@ -126,10 +126,12 @@ tfoot {
 
 h1, h2 {
   color: #333;
+  text-align: center; /* Center text */
 }
 
 .tabs, .user-info {
   margin-bottom: 20px;
+  text-align: center; /* Center text */
 }
 
 .tabs button, .user-info button {
@@ -151,13 +153,13 @@ h1, h2 {
 
 .dropdown, .user-info label, .user-info select, .user-info input {
   display: block;
-  margin-bottom: 10px;
+  margin: 0 auto 10px; /* Center block elements */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin: 0 auto 20px; /* Center table */
 }
 
 th, td {

@@ -73,7 +73,7 @@
   
   .calendar {
     width: 45rem;
-    height: 70vh;
+    height: 90vh;
     background-color: #222227;
     box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
   }
@@ -81,7 +81,7 @@
   .month {
     width: 100%;
     height: 12rem;
-    background-color: #167e56;
+    background-color: #FFD4B7;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -157,7 +157,7 @@
   }
   
   .today {
-    background-color: #167e56;
+    background-color: #FFD4B7;
   }
 
   .section-name{
@@ -190,8 +190,8 @@
 }
 
 .tabs button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: #FFD4B7;
+  color: black;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -200,7 +200,7 @@
 }
 
 .tabs button:hover {
-  background-color: #45a049;
+  background-color: #FFD4B7;
 }
 
 
@@ -214,7 +214,7 @@
 }
 
 .tabs button.active {
-  background-color: #45a049;
+  background-color: #FFD4B7;
 }
 
 .tab-content.active {
@@ -235,8 +235,8 @@ input {
 }
 
 button {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: #FFD4B7;
+  color: black;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -246,7 +246,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #FFD4B7;
 }
 
 table {
@@ -271,8 +271,8 @@ tfoot {
 }
 
 .tabs button, .user-info button {
-  background-color: #4CAF50;
-  color: #fff;
+  background-color: #FFD4B7;
+  color: black;
   border: none;
   padding: 10px;
   margin: 10px;
@@ -285,7 +285,7 @@ tfoot {
 }
 
 .tabs button:hover, .user-info button:hover {
-  background-color: #45a049;
+  background-color: #FFD4B7;
 }
 
 .dropdown, .user-info label, .user-info select, .user-info input {
@@ -305,7 +305,7 @@ th, td {
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #FFD4B7;
   color: #fff;
 }
 

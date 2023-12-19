@@ -1,13 +1,122 @@
 <!DOCTYPE html>
-<html>
-
-<%- include('layouts/header.ejs') %>
-
+<html lang="en">
+  <%- include('layouts/header'); %>
 <body>
-<%- include('layouts/navbar.ejs') %>
-<div class="container">
-  <h1>Nutrition</h1>
+  <%- include('layouts/navbar.ejs') %>
+  <div id="calories" class="user-info">
+    <h1>Calorie Counter</h1>
+    <div class="tabs">
+      <button onclick="changeTab('breakfast')">Breakfast</button>
+      <button onclick="changeTab('lunch')">Lunch</button>
+      <button onclick="changeTab('dinner')">Dinner</button>
+    </div>
+    <div class="dropdown">
+      <label class="small-text" for="daySelect">Select Day:</label>
+      <select id="daySelect" onchange="updateDay()">
+        <option value="monday">Monday</option>
+        <option value="tuesday">Tuesday</option>
+        <option value="wednesday">Wednesday</option>
+        <option value="thursday">Thursday</option>
+        <option value="friday">Friday</option>
+        <option value="saturday">Saturday</option>
+        <option value="sunday">Sunday</option>
+      </select>
+    </div>
+    <div id="breakfastTab" class="tab-content">
+      <h2>Breakfast</h2>
+      <label class="small-text" for="breakfastFoodName">Food Name:</label>
+      <input type="text" id="breakfastFoodName" placeholder="Enter food name">
+      <label class="small-text" for="breakfastCalories">Calories:</label>
+      <input type="number" id="breakfastCalories" placeholder="Enter calories">
+      <button onclick="addFood('breakfast')">Add Food</button>
+      <table id="breakfastTable">
+        <thead>
+          <tr>
+            <th class="small-text">Food Name</th>
+            <th class="small-text">Calories</th>
+          </tr>
+        </thead>
+        <tbody id="breakfastList"></tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total Calories:</strong></td>
+            <td id="breakfastTotalCalories">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div id="lunchTab" class="tab-content">
+      <h2>Lunch</h2>
+      <label for="lunchFoodName">Food Name:</label>
+      <input type="text" id="lunchFoodName" placeholder="Enter food name">
+      <label for="lunchCalories">Calories:</label>
+      <input type="number" id="lunchCalories" placeholder="Enter calories">
+      <button onclick="addFood('lunch')">Add Food</button>
+      <table id="lunchTable">
+        <thead>
+          <tr>
+            <th class="small-text">Food Name</th>
+            <th class="small-text">Calories</th>
+          </tr>
+        </thead>
+        <tbody id="lunchList"></tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total Calories:</strong></td>
+            <td id="lunchTotalCalories">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div id="dinnerTab" class="tab-content">
+      <h2>Dinner</h2>
+      <label for="dinnerFoodName">Food Name:</label>
+      <input type="text" id="dinnerFoodName" placeholder="Enter food name">
+      <label for="dinnerCalories">Calories:</label>
+      <input type="number" id="dinnerCalories" placeholder="Enter calories">
+      <button onclick="addFood('dinner')">Add Food</button>
+      <table id="dinnerTable">
+        <thead>
+          <tr>
+            <th class="small-text">Food Name</th>
+            <th class="small-text">Calories</th>
+          </tr>
+        </thead>
+        <tbody id="dinnerList"></tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total Calories:</strong></td>
+            <td id="dinnerTotalCalories">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="user-info">
+    <h2>User Information</h2>
+    <label class="small-text" for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter your age">
+    <label class="small-text" for="weight">Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter your weight">
+    <label class="small-text" for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Enter your height">
+    <label class="small-text" for="gender">Gender:</label>
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <label class="small-text" for="activity">Activity Level:</label>
+    <select id="activity">
+      <option value="sedentary">Sedentary (little or no exercise)</option>
+      <option value="lightlyActive">Lightly Active (light exercise/sports 1-3 days/week)</option>
+      <option value="moderatelyActive">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+      <option value="veryActive">Very Active (hard exercise/sports 6-7 days a week)</option>
+      <option value="superActive">Super Active (very hard exercise/sports & physical job or 2x training)</option>
+    </select>
+    <button onclick="calculateRecommendedCalories()">Calculate Recommended Calories</button>
+    <p id="recommendedCalories"></p>
+  </div>
 </div>
-<%- include('layouts/footer.ejs') %>
 </body>
+<%- include('layouts/footer'); %>
 </html>

@@ -135,12 +135,12 @@
                 }
             }
 
-            function editHtmlTbleSelectedRow()
+            function editSelectedRow()
             {
                 var exercise = document.getElementById("exercise").value,
                     sets = document.getElementById("sets").value,
                     reps = document.getElementById("reps").value;
-               if(!checkEmptyInput()){
+               if(!inputCheck()){
                 table.rows[rIndex].cells[0].innerHTML = exercise;
                 table.rows[rIndex].cells[1].innerHTML = sets;
                 table.rows[rIndex].cells[2].innerHTML = reps;

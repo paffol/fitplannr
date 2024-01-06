@@ -27,10 +27,13 @@
 </head>
 <body>
 <center> 
+    <br>
+    <input type="text" name="workoutName" id="workoutName" style="width:350px; height: 25px; text-align: center; font-size:20px;" placeholder="Workout Name">
+    <br><br>
     <div>
-        Exercise:<input type="text" name="exercise" id="exercise" style="width:200px;">
-        Sets:<input type="number" name="sets" id="sets" style="width:200px;">
-        Reps:<input type="number" name="reps" id="reps" style="width:200px;">
+        Exercise: <input type="text" name="exercise" id="exercise" style="width:200px;">
+        Sets: <input type="number" name="sets" id="sets" style="width:100px;">
+        Reps: <input type="number" name="reps" id="reps" style="width:100px;">
         <br><br>
         <button onclick="addRow();">Add</button>
         <button onclick="editSelectedRow();">Edit</button>
@@ -46,21 +49,7 @@
                 <th>Sets</th>
                 <th>Reps</th>
             </tr>
-            <tr>
-                <td>pullups</td>
-                <td>3</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>A3</td>
-                <td>B3</td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td>A2</td>
-                <td>B2</td>
-                <td>20</td>
-            </tr>
+            
         </table>
     </div>
 
@@ -69,12 +58,23 @@
             var rIndex,
                 table = document.getElementById("table");
 
-        function removeSelectedRow()
+let arr= [
+  
+];
+        function deleteRow(array1, row) //from array
+            {
+            array1 = array1.slice(0); // make copy
+            array1.splice(row - 1, 1);
+            return array1;
+            }
+        function removeSelectedRow()//from table
             {
                 table.deleteRow(rIndex);
                 document.getElementById("exercise").value = "";
                 document.getElementById("sets").value = "";
                 document.getElementById("reps").value = "";
+
+                arr=deleteRow(arr,rIndex);
             }
 
          function inputCheck()
@@ -114,6 +114,9 @@
                 cell2.innerHTML = sets;
                 cell3.innerHTML = reps;
 
+                let tempArr = [exercise,sets,reps];
+                arr.push(tempArr);
+
                 //call the function to set the event to the new row
                 selectedRowToInput();
             }
@@ -133,6 +136,7 @@
                       document.getElementById("reps").value = this.cells[2].innerHTML;
                     };
                 }
+                console.log(rIndex);
             }
 
             function editSelectedRow()
@@ -146,6 +150,12 @@
                 table.rows[rIndex].cells[2].innerHTML = reps;
               }
             }
+
+
+
+
+
+            
             
             
 

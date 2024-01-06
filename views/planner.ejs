@@ -40,63 +40,139 @@
 </head>
 
 <body>
-    <center>
-    <h2>Workout Table</h2>
-
-    <table id="workoutTable">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Exercise Name</th>
-                <th>Sets</th>
-                <th>Reps</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td><input type="text" onkeypress="handleKeyPress(event, this, 2)"></td>
-                <td><input type="text" onkeypress="handleKeyPress(event, this, 3)"></td>
-                <td><input type="text" onkeypress="handleKeyPress(event, this, 4)"></td>
-            </tr>
-        </tbody>
-    </table>
-</center>
-
-</body>
-
-  
-
-
-<script>
-    function handleKeyPress(event, element, columnIndex) {
-        if (event.key === "Enter") {
-            var table = document.getElementById("workoutTable").getElementsByTagName('tbody')[0];
-
-            // Create a new row at the end of the table
-            var newRow = table.insertRow(table.rows.length);
-
-            for (var i = 0; i < 4; i++) {
-                var cell = newRow.insertCell(i);
-
-                // Set value of the new row based on the input
-                if (i === 0) {
-                    cell.innerHTML = table.rows.length;
-                } else {
-                    var input = document.createElement("input");
-                    input.type = "text";
-                    input.setAttribute("onkeypress", "handleKeyPress(event, this, " + (i + 2) + ")");
-                    input.value = i === columnIndex - 1 ? element.value : "";
-                    cell.appendChild(input);
+    <center> 
+        <br>
+        <input type="text" name="workoutName" id="workoutName" style="width:350px; height: 25px; text-align: center; font-size:20px;" placeholder="Workout Name">
+        <br><br>
+        <div>
+            Exercise: <input type="text" name="exercise" id="exercise" style="width:200px;">
+            Sets: <input type="number" name="sets" id="sets" style="width:100px;">
+            Reps: <input type="number" name="reps" id="reps" style="width:100px;">
+            <br><br>
+            <button onclick="addRow();">Add</button>
+            <button onclick="editSelectedRow();">Edit</button>
+            <button onclick="removeSelectedRow();">Remove</button>
+    </div>
+    </center>
+    
+    <div>
+        <div >
+            <table id="table" border="1">
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+                
+            </table>
+        </div>
+    
+    
+        <script>
+                var rIndex,
+                    table = document.getElementById("table");
+    
+    let arr= [
+      
+    ];
+            function deleteRow(array1, row) //from array
+                {
+                array1 = array1.slice(0); // make copy
+                array1.splice(row - 1, 1);
+                return array1;
                 }
-            }
-
-            // Clear the input in the current cell
-            element.value = "";
-
-            // Prevent the default behavior of the Enter key
-            event.preventDefault();
-        }
-    }
-</script>
+            function removeSelectedRow()//from table
+                {
+                    table.deleteRow(rIndex);
+                    document.getElementById("exercise").value = "";
+                    document.getElementById("sets").value = "";
+                    document.getElementById("reps").value = "";
+    
+                    arr=deleteRow(arr,rIndex);
+                }
+    
+             function inputCheck()
+                {
+                    var isEmpty = false,
+                        exercise = document.getElementById("exercise").value,
+                        sets = document.getElementById("sets").value,
+                        reps = document.getElementById("reps").value;
+                
+                    if(exercise === ""){
+                        alert("Please enter 'Exercise'.");
+                        isEmpty = true;
+                    }
+                    else if(sets === ""){
+                        alert("Please enter 'Sets'.");
+                        isEmpty = true;
+                    }
+                    else if(reps === ""){
+                        alert("Please enter 'Reps'.");
+                        isEmpty = true;
+                    }
+                    return isEmpty;
+                }
+            
+             function addRow()
+             {
+                if(!inputCheck()){
+                    var newRow = table.insertRow(table.length),
+                        cell1 = newRow.insertCell(0),
+                        cell2 = newRow.insertCell(1),
+                        cell3 = newRow.insertCell(2),
+                        exercise = document.getElementById("exercise").value,
+                        sets = document.getElementById("sets").value,
+                        reps = document.getElementById("reps").value;
+                
+                    cell1.innerHTML = exercise;
+                    cell2.innerHTML = sets;
+                    cell3.innerHTML = reps;
+    
+                    let tempArr = [exercise,sets,reps];
+                    arr.push(tempArr);
+    
+                    //call the function to set the event to the new row
+                    selectedRowToInput();
+                }
+             }
+    
+             function selectedRowToInput()
+                {
+                    
+                    for(var i = 1; i < table.rows.length; i++)
+                    {
+                        table.rows[i].onclick = function()
+                        {
+                          // get the index of the selected row
+                          rIndex = this.rowIndex;
+                          document.getElementById("exercise").value = this.cells[0].innerHTML;
+                          document.getElementById("sets").value = this.cells[1].innerHTML;
+                          document.getElementById("reps").value = this.cells[2].innerHTML;
+                        };
+                    }
+                    console.log(rIndex);
+                }
+    
+                function editSelectedRow()
+                {
+                    var exercise = document.getElementById("exercise").value,
+                        sets = document.getElementById("sets").value,
+                        reps = document.getElementById("reps").value;
+                   if(!inputCheck()){
+                    table.rows[rIndex].cells[0].innerHTML = exercise;
+                    table.rows[rIndex].cells[1].innerHTML = sets;
+                    table.rows[rIndex].cells[2].innerHTML = reps;
+                  }
+                }
+    
+    
+    
+    
+    
+                
+                
+                
+    
+        </script>
+    
 </html>

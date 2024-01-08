@@ -5,9 +5,37 @@
 
 <body>
   <%- include('layouts/navbar.ejs') %>
-  <div class="container">
-  <h1>Home</h1>
-  </div>
+  <title>FitPlaner - Your Fitness Journey Starts Here</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>FitPlaner</h1>
+        <p>Your Fitness Journey Starts Here</p>
+    </header>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to FitPlaner, your ultimate destination for fitness enthusiasts. Discover personalized workout plans, expert nutrition guidance, engaging group fitness classes, and a wealth of health and wellness tips.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Personalized Workout Plans</li>
+            <li>Nutrition Guidance</li>
+            <li>Group Fitness Classes</li>
+            <li>Health and Wellness Tips</li>
+        </ul>
+    </section>
+
+    <section id="join">
+        <h2>Join Us Today!</h2>
+        <p>Embark on your fitness journey with FitPlaner. Join our thriving community and stay motivated with personalized plans and expert guidance.</p>
+        <button onclick="window.location.href='signup.html'">Sign Up Now</button>
+    </section>
+
   <%- include('layouts/footer.ejs') %>
 </body>
 </html>

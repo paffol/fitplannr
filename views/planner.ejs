@@ -19,7 +19,7 @@
         }
         table {
             border-collapse: collapse;
-            width: 60%;
+            width: 50%;
             margin-top: 20px;
         }
 
@@ -29,13 +29,14 @@
 
         th, td {
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
 
         input[type="text"] {
             width: 98%;
             padding: 5px;
         }
+
     </style>
 </head>
 
@@ -46,8 +47,8 @@
         <br><br>
         <div>
             Exercise: <input type="text" name="exercise" id="exercise" style="width:200px;">
-            Sets: <input type="number" name="sets" id="sets" style="width:100px;">
-            Reps: <input type="number" name="reps" id="reps" style="width:100px;">
+            Sets: <input type="number" name="sets" id="sets" style="width:100px;" min="1">
+            Reps: <input type="number" name="reps" id="reps" style="width:100px;" min="1">
             <br><br>
             <button onclick="addRow();">Add</button>
             <button onclick="editSelectedRow();">Edit</button>
@@ -57,11 +58,11 @@
     
     <div>
         <div >
-            <table id="table" border="1">
+            <table id="table" border="1" style="text-align: center">
                 <tr>
-                    <th>Exercise</th>
-                    <th>Sets</th>
-                    <th>Reps</th>
+                    <th style="max-width:35px;">Exercise</th>
+                    <th style="max-width:15px;">Sets</th>
+                    <th style="max-width:15px;">Reps</th>
                 </tr>
                 
             </table>
@@ -83,12 +84,14 @@
                 }
             function removeSelectedRow()//from table
                 {
-                    table.deleteRow(rIndex);
-                    document.getElementById("exercise").value = "";
-                    document.getElementById("sets").value = "";
-                    document.getElementById("reps").value = "";
+                    
+                        table.deleteRow(rIndex);
+                        document.getElementById("exercise").value = "";
+                        document.getElementById("sets").value = "";
+                        document.getElementById("reps").value = "";
     
-                    arr=deleteRow(arr,rIndex);
+                        arr=deleteRow(arr,rIndex); 
+                    
                 }
     
              function inputCheck()
@@ -102,11 +105,11 @@
                         alert("Please enter 'Exercise'.");
                         isEmpty = true;
                     }
-                    else if(sets === ""){
+                    else if(sets === ""|| sets<1){
                         alert("Please enter 'Sets'.");
                         isEmpty = true;
                     }
-                    else if(reps === ""){
+                    else if(reps === ""|| reps<1){
                         alert("Please enter 'Reps'.");
                         isEmpty = true;
                     }

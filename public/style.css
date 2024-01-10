@@ -81,7 +81,7 @@
   .month {
     width: 100%;
     height: 12rem;
-    background-color: #FFD4B7;
+    background-color: #EFECE0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -157,7 +157,7 @@
   }
   
   .today {
-    background-color: #FFD4B7;
+    background-color: #EFECE0;
   }
 
   .section-name{
@@ -190,7 +190,7 @@
 }
 
 .tabs button {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: black;
   padding: 12px 20px;
   border: none;
@@ -200,7 +200,7 @@
 }
 
 .tabs button:hover {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
 }
 
 
@@ -214,7 +214,7 @@
 }
 
 .tabs button.active {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
 }
 
 .tab-content.active {
@@ -235,7 +235,7 @@ input {
 }
 
 button {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: black;
   padding: 12px 20px;
   border: none;
@@ -246,7 +246,7 @@ button {
 }
 
 button:hover {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
 }
 
 table {
@@ -271,7 +271,7 @@ tfoot {
 }
 
 .tabs button, .user-info button {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: black;
   border: none;
   padding: 10px;
@@ -285,7 +285,7 @@ tfoot {
 }
 
 .tabs button:hover, .user-info button:hover {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
 }
 
 .dropdown, .user-info label, .user-info select, .user-info input {
@@ -305,7 +305,7 @@ th, td {
 }
 
 th {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: #fff;
 }
 
@@ -329,7 +329,7 @@ body {
 }
 
 header {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: white;
   text-align: center;
   padding: 2em;
@@ -361,7 +361,7 @@ section {
 }
 
 h2 {
-  color: #FFD4B7;
+  color: #EFECE0;
 }
 
 ul {
@@ -374,7 +374,7 @@ ul li {
 }
 
 button {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
   color: black;
   padding: 10px 20px;
   border: none;
@@ -386,7 +386,7 @@ button {
 }
 
 button:hover {
-  background-color: #FFD4B7;
+  background-color: #EFECE0;
 }
 
 footer {

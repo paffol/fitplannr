@@ -10,25 +10,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 class="section-name">Workout Planner</h1>
     
     <title>Workout Table</title>
     <style>
         body{
-            background-color: #12121f;
+            background-color: black;
             color: white;
         }
         table {
             border-collapse: collapse;
             width: 50%;
-            margin-top: 20px;
+            margin-top: 1pt;
         }
 
         table, th, td {
-            border: 1px solid #5a5858;
+            border: 2px solid black;
         }
 
         th, td {
-            padding: 8px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -60,9 +61,9 @@
         <div >
             <table id="table" border="1" style="text-align: center">
                 <tr>
-                    <th style="max-width:35px;">Exercise</th>
-                    <th style="max-width:15px;">Sets</th>
-                    <th style="max-width:15px;">Reps</th>
+                    <th style="max-width:90px;">Exercise</th>
+                    <th style="max-width:60px;">Sets</th>
+                    <th style="max-width:60px;">Reps</th>
                 </tr>
                 
             </table>
@@ -167,15 +168,7 @@
                     table.rows[rIndex].cells[2].innerHTML = reps;
                   }
                 }
-    
-    
-    
-    
-    
-                
-                
-                
-    
+
         </script>
     
 </html>

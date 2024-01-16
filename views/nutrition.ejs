@@ -118,7 +118,6 @@
         </select>
         <button onclick="calculateRecommendedCalories()">Calculate Recommended Calories</button>
         <p id="recommendedCalories"></p>
-        <p id="totalCalories">Total Calories: 0</p>
       </div>
     </div>
     <%- include('layouts/footer'); %>
@@ -194,7 +193,9 @@
   }
 
   // Display the result
+
   document.getElementById('recommendedCalories').innerText = 'Recommended Calories: ' + Math.round(tdee);
+
 }
 
       function calculateTotalCalories() {

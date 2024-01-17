@@ -379,7 +379,7 @@ ul li {
   padding: 10px 0;
 }
 
-button {
+button.nutrition {
   background-color: #EFECE0;
   color: black;
   padding: 10px 20px;

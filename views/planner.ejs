@@ -13,35 +13,10 @@
     <h1 class="section-name">Workout Planner</h1>
     
     <title>Workout Table</title>
-    <style>
-        body{
-            background-color: black;
-            color: white;
-        }
-        table {
-            border-collapse: collapse;
-            width: 50%;
-            margin-top: 1pt;
-        }
 
-        table, th, td {
-            border: 2px solid black;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        input[type="text"] {
-            width: 98%;
-            padding: 5px;
-        }
-
-    </style>
 </head>
 
-<body>
+<body class="planner">
     <center> 
         <br>
         <input type="text" name="workoutName" id="workoutName" style="width:350px; height: 25px; text-align: center; font-size:20px;" placeholder="Workout Name">
@@ -59,7 +34,7 @@
     
     <div>
         <div >
-            <table id="table" border="1" style="text-align: center">
+            <table id="table" border="1">
                 <tr>
                     <th style="max-width:90px;">Exercise</th>
                     <th style="max-width:60px;">Sets</th>
@@ -70,105 +45,6 @@
         </div>
     
     
-        <script>
-                var rIndex,
-                    table = document.getElementById("table");
-    
-    let arr= [
-      
-    ];
-            function deleteRow(array1, row) //from array
-                {
-                array1 = array1.slice(0); // make copy
-                array1.splice(row - 1, 1);
-                return array1;
-                }
-            function removeSelectedRow()//from table
-                {
-                    
-                        table.deleteRow(rIndex);
-                        document.getElementById("exercise").value = "";
-                        document.getElementById("sets").value = "";
-                        document.getElementById("reps").value = "";
-    
-                        arr=deleteRow(arr,rIndex); 
-                    
-                }
-    
-             function inputCheck()
-                {
-                    var isEmpty = false,
-                        exercise = document.getElementById("exercise").value,
-                        sets = document.getElementById("sets").value,
-                        reps = document.getElementById("reps").value;
-                
-                    if(exercise === ""){
-                        alert("Please enter 'Exercise'.");
-                        isEmpty = true;
-                    }
-                    else if(sets === ""|| sets<1){
-                        alert("Please enter 'Sets'.");
-                        isEmpty = true;
-                    }
-                    else if(reps === ""|| reps<1){
-                        alert("Please enter 'Reps'.");
-                        isEmpty = true;
-                    }
-                    return isEmpty;
-                }
-            
-             function addRow()
-             {
-                if(!inputCheck()){
-                    var newRow = table.insertRow(table.length),
-                        cell1 = newRow.insertCell(0),
-                        cell2 = newRow.insertCell(1),
-                        cell3 = newRow.insertCell(2),
-                        exercise = document.getElementById("exercise").value,
-                        sets = document.getElementById("sets").value,
-                        reps = document.getElementById("reps").value;
-                
-                    cell1.innerHTML = exercise;
-                    cell2.innerHTML = sets;
-                    cell3.innerHTML = reps;
-    
-                    let tempArr = [exercise,sets,reps];
-                    arr.push(tempArr);
-    
-                    //call the function to set the event to the new row
-                    selectedRowToInput();
-                }
-             }
-    
-             function selectedRowToInput()
-                {
-                    
-                    for(var i = 1; i < table.rows.length; i++)
-                    {
-                        table.rows[i].onclick = function()
-                        {
-                          // get the index of the selected row
-                          rIndex = this.rowIndex;
-                          document.getElementById("exercise").value = this.cells[0].innerHTML;
-                          document.getElementById("sets").value = this.cells[1].innerHTML;
-                          document.getElementById("reps").value = this.cells[2].innerHTML;
-                        };
-                    }
-                    console.log(rIndex);
-                }
-    
-                function editSelectedRow()
-                {
-                    var exercise = document.getElementById("exercise").value,
-                        sets = document.getElementById("sets").value,
-                        reps = document.getElementById("reps").value;
-                   if(!inputCheck()){
-                    table.rows[rIndex].cells[0].innerHTML = exercise;
-                    table.rows[rIndex].cells[1].innerHTML = sets;
-                    table.rows[rIndex].cells[2].innerHTML = reps;
-                  }
-                }
 
-        </script>
-    
+
 </html>

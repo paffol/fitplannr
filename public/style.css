@@ -395,3 +395,24 @@ button:hover {
   background-color: #e2d59c;
 }
 
+/*PLANNER*/
+
+body.planner{
+  background-color: black;
+  color: white;
+}
+table.planner  {
+  border-collapse: collapse;
+  width: 50%;
+  margin-top: 1pt;
+}
+
+th.planner, td.planner  {
+  border: 2px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+button.planner{
+  
+}

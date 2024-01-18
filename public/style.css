@@ -43,7 +43,7 @@
 }
   
 .container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: black;
   color: #eee;
@@ -137,7 +137,7 @@ label {
 }
 
 input.nutrition {
-  width: 80%;
+  width: 100%;
   padding: 10px;
   margin-bottom: 16px;
   box-sizing: border-box;

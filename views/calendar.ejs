@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <%- include('layouts/header'); %>
-<<<<<<< HEAD
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -21,7 +20,7 @@
       background-color: #333;
       padding: 10px;
       border-radius: 5px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .container {
@@ -59,7 +58,7 @@
       background-color: #555;
       color: #fff;
       border: none;
-      padding: 30px;
+      padding: 10px;
       cursor: pointer;
       border-radius: 5px;
     }
@@ -67,13 +66,13 @@
     .days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 20px;
+      gap: 10px;
       padding: 10px;
     }
 
     .day {
       position: relative;
-      padding: 30px;
+      padding: 20px;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
@@ -84,14 +83,13 @@
     }
 
     .note {
-      font-size: 0.4rem; /* Adjust the font size as needed */
-      margin-top: 1px; /* Adjust the margin as needed */
+      font-size: 1rem;
+      margin-top: 10px;
       color: #fff;
-      font-weight: 100; /* Set to 'normal' */
-      font-family: 'Arial', sans-serif; /* Change to your preferred font family */
     }
+
     .days div {
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -175,32 +173,6 @@
     <textarea id="noteInput" placeholder="Enter your note"></textarea>
     <button id="saveNoteBtn">Save Note</button>
   </div>
-=======
-  <body class="homepage centerItems">
-    <%- include('layouts/navbar.ejs') %>
-    <div class="container">
-      <div class="calendar">
-        <div class="month">
-          <i class="fas fa-angle-left prev"></i>
-          <div class="date">
-            <h1></h1>
-            <p></p>
-          </div>
-          <i class="fas fa-angle-right next"></i>
-        </div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="days"></div>
-      </div>
-    </div>
->>>>>>> e1e3d4cf1522a3d496d493594e1eb7a3845842c8
 
   <%- include('layouts/footer'); %>
 

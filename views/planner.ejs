@@ -14,25 +14,32 @@
 <body class="homepage">
 
     <%- include('layouts/navbar.ejs') %>
-        <div class="center">
+
+    
+    
+
+        <div class="center" style="color: #EFECE0;">
             <h4 style="color: #EFECE0; font-size: 50pt;">Workout Planner</h4>
             <br><br>
-        <input class="BigInput" type="text" name="workoutName" id="workoutName" placeholder="Workout Name">
+        <input class="BigInput" type="text" name="workoutName" id="workoutName" placeholder="Name Your Workout">
         
-        <br><br>
-            <h3 style="color:antiquewhite">Enter:</h3>
-            Exercise: <input class="planner" type="text" name="exercise" id="exercise" style="width:200px;" placeholder="Exercise">
-            Sets: <input class="planner" type="number" name="sets" id="sets" style="width:100px;" min="1" placeholder="Reps">
-            Reps: <input class="planner" type="number" name="reps" id="reps" style="width:100px;" min="1" placeholder="Sets">
+        <br><br><br>
+            
+            Exercise: <input class="planner" type="text" name="exercise" id="exercise" style="width:200px; margin-right: 25px;" >
+              Sets: <input class="planner" type="number" name="sets" id="sets" style="width:100px; margin-right: 8px;" min="1" >
+              Reps: <input class="planner" type="number" name="reps" id="reps" style="width:100px;" min="1" >
             <br><br>
+            
             <button onclick="addRow();" class="planner">Add</button>
-            <button onclick="editSelectedRow();" class="planner">Edit</button>
-            <button onclick="removeSelectedRow();" class="planner">Remove</button>
+            <button onclick="editSelectedRow();" class="planner" >Edit</button>
+            <button onclick="removeSelectedRow();" class="planner" >Remove</button>
     </div>
     
     
     
         <div >
+        <button style="margin-left: 80%;" class="saveButton">Save Workout</button>
+            <center>
             <table class="planner" id="table" >
                 <tr>
                     <th style="max-width:90px;">Exercise</th>
@@ -42,10 +49,28 @@
                 
                 
             </table>
+        </center>
         </div>
+        <br><br><br><br><br><br><br><br><br><br>
+    
+        <div>
+            <table class="saved" style="margin-left: 7%;" id="workouts" >
+                <tr>
+                    <th style="max-width:90px; text-align: center;">Saved Workouts</th>
+                    <th style="max-width:60px; text-align: center;">Date</th>
+                </tr>
+                <tr>
+                    <td>Chest Day</td>
+                    <td>2024-01-17</td>
+                </tr>
+                <tr>
+                    <td>Leg Day</td>
+                    <td>2024-01-15</td>
+                </tr>
+                
+            </table>
         <br><br>
-    
-    
+        </div>
 
 </body>
 <script>

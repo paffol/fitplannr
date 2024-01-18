@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('layouts/header'); %>
-  <body class="homepage centerItems">
+  <body>
     <%- include('layouts/navbar.ejs') %>
     <div id="calories" class="user-info">
       <h1>Calorie Counter</h1>
@@ -26,11 +26,11 @@
       <div id="breakfastTab" class="tab-content">
         <h2>Breakfast</h2>
         <label class="small-text" for="breakfastFoodName">Food Name:</label>
-        <input class="nutrition" type="text" id="breakfastFoodName" placeholder="Enter food name">
+        <input type="text" id="breakfastFoodName" placeholder="Enter food name">
         <label class="small-text" for="breakfastCalories">Calories:</label>
-        <input class="nutrition" type="number" id="breakfastCalories" placeholder="Enter calories">
+        <input type="number" id="breakfastCalories" placeholder="Enter calories">
         <button class="nutrition" onclick="addFood('breakfast')">Add Food</button>
-        <table class="nutrition" id="breakfastTable">
+        <table id="breakfastTable">
           <thead>
             <tr>
               <th class="small-text">Food Name</th>
@@ -50,11 +50,11 @@
       <div id="lunchTab" class="tab-content">
         <h2>Lunch</h2>
         <label class="small-text" for="lunchFoodName">Food Name:</label>
-        <input class="nutrition" type="text" id="lunchFoodName" placeholder="Enter food name">
+        <input type="text" id="lunchFoodName" placeholder="Enter food name">
         <label class="small-text" for="lunchCalories">Calories:</label>
-        <input class="nutrition" type="number" id="lunchCalories" placeholder="Enter calories">
+        <input type="number" id="lunchCalories" placeholder="Enter calories">
         <button class="nutrition" onclick="addFood('lunch')">Add Food</button>
-        <table class="nutrition" id="lunchTable">
+        <table id="lunchTable">
           <thead>
             <tr>
               <th class="small-text">Food Name</th>
@@ -74,11 +74,11 @@
       <div id="dinnerTab" class="tab-content">
         <h2>Dinner</h2>
         <label class="small-text" for="dinnerFoodName">Food Name:</label>
-        <input class="nutrition" type="text" id="dinnerFoodName" placeholder="Enter food name">
+        <input type="text" id="dinnerFoodName" placeholder="Enter food name">
         <label class="small-text" for="dinnerCalories">Calories:</label>
-        <input class="nutrition" type="number" id="dinnerCalories" placeholder="Enter calories">
+        <input type="number" id="dinnerCalories" placeholder="Enter calories">
         <button class="nutrition" onclick="addFood('dinner')">Add Food</button>
-        <table class="nutrition" id="dinnerTable">
+        <table id="dinnerTable">
           <thead>
             <tr>
               <th class="small-text">Food Name</th>
@@ -98,11 +98,11 @@
       <div class="user-info">
         <h2>User Information</h2>
         <label class="small-text" for="age">Age:</label>
-        <input class="nutrition" type="number" id="age" placeholder="Enter your age">
+        <input type="number" id="age" placeholder="Enter your age">
         <label class="small-text" for="weight">Weight (kg):</label>
-        <input class="nutrition" type="number" id="weight" placeholder="Enter your weight">
+        <input type="number" id="weight" placeholder="Enter your weight">
         <label class="small-text" for="height">Height (cm):</label>
-        <input class="nutrition" type="number" id="height" placeholder="Enter your height">
+        <input type="number" id="height" placeholder="Enter your height">
         <label class="small-text" for="gender">Gender:</label>
         <select id="gender">
           <option value="male">Male</option>

@@ -209,6 +209,7 @@ function calculateRecommendedCalories() {
 
 //PLANNER
 
+<<<<<<< HEAD
 var rIndex, table = document.getElementById("table");
 let arr= [ ];
 
@@ -324,3 +325,6 @@ function editSelectedRow()
     }
 
 }
+=======
+
+>>>>>>> 7a4ad5df0e31adb710958227638d1504b14117b7

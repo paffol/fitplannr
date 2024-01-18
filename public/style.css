@@ -294,22 +294,28 @@ tfoot {
   background-color: #EFECE0;
 }
 
-.dropdown, .user-info label, .user-info select, .user-info input {
+.dropdown, .user-info label, .user-info select, .user-info, input.user-info {
   display: block;
   margin: auto;
 }
 
 
 
-th, td {
-  padding: 8px;
+th{
+  border: 2px solid black;
+  padding: 10px;
+  background-color: #EFECE0;
   text-align: left;
 }
 
-th {
-  background-color: #EFECE0;
-  color: #fff;
+td {
+  border: 2px solid black;
+  padding: 10px;
+  text-align: left;
+  color: #EFECE0;
 }
+
+
 
 .user-info p {
   margin-top: 10px;
@@ -364,6 +370,9 @@ section {
 .homepage-h2 {
   color: black;
 }
+.homepage-h3 {
+  color: white;
+}
 
 ul {
   list-style-type: none;
@@ -398,12 +407,18 @@ table.planner  {
   margin-top: 1pt;
 }
 
-th.planner, td.planner  {
+th.planner  {
   border: 2px solid black;
   padding: 10px;
   text-align: center;
+  background-color: #EFECE0;
 }
 
+td.planner  {
+  padding: 10px;
+  text-align: center;
+  background-color: #EFECE0;
+}
 button.planner{
   background-color: #EFECE0;
   color: black;
@@ -423,5 +438,16 @@ button.planner{
   align-items: center;
 }
 
+input.planner{
+  height:30px;
+  font-size: 14pt;
+  text-align: center;
+  
+}
 
+input.BigInput{
+  width:300px; 
+  height: 35px; 
+  font-size:20px;
+}
 

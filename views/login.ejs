@@ -1,41 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('layouts/header'); %>
-<body>
-    <%- include('layouts/navbar'); %>
-    <div class="container">
-        <form method = "post">
-        <!--Title-->
-        <h2>LOGIN</h2>
-        <!--variables for email-->
-        <div class = "form-group">
-        <lebel class="email">Email Address</lebel>
-        <input
-        type = "email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Enter email"
-        />
-        </div>
-        <!--variables for password-->
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+      <%- include ('partials/messages') %>
+      <form action="/users/login" method="POST">
         <div class="form-group">
-            <lebel for="password">Password</lebel>
-            <input
-            type="password"
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
             class="form-control"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
             id="password"
             name="password"
-            placeholder="Enter password"
-        />
+            class="form-control"
+            placeholder="Enter Password"
+          />
         </div>
-        <br />
-        <!--Button to sign up-->
-        <button type="submit" class="btn">Login</button>
-        <!--Link, leads to Sign Up page once clicked-->
-        <a class="'nav-item nav-link" href="signup">Have you Signed Up?</a>    
-    </form>
-    </div>   
-</body>
-<%- include('layouts/footer'); %>
-</html>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <p class="lead mt-4">
+        No Account? <a href="/users/register">Register</a>
+      </p>
+    </div>
+  </div>
+</div>

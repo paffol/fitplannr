@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/header.ejs') %>
+
+<body>
+  <%- include('partials/navbar.ejs') %>
+  <div class="container">
+  <h1>Welcome <%= user.name %></h1>
+  </div>
+  <a href="/users/logout" class="btn btn-secondary">Logout</a>
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
   <%- include('layouts/header'); %>
-<<<<<<< HEAD
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -50,7 +50,7 @@
     .month-navigation {
       display: flex;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 50px;
       align-items: center;
     }
 
@@ -58,7 +58,7 @@
       background-color: #555;
       color: #fff;
       border: none;
-      padding: 10px;
+      padding: 40px;
       cursor: pointer;
       border-radius: 5px;
     }
@@ -89,7 +89,7 @@
     }
 
     .days div {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -162,33 +162,73 @@
                 <div class="day"></div>
               <% } %>
             <% } %>
-=======
-  <body>
-    <%- include('layouts/navbar.ejs') %>
-    <div class="container">
-      <div class="calendar">
-        <div class="month">
-          <i class="fas fa-angle-left prev"></i>
-          <div class="date">
-            <h1></h1>
-            <p></p>
->>>>>>> parent of 9e8a6ec (Interactive calender)
           </div>
-          <i class="fas fa-angle-right next"></i>
         </div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="days"></div>
-      </div>
+      <% } %>
     </div>
+  </div>
 
-  </body>
+  <!-- Modal for adding notes -->
+  <div id="noteModal" class="modal">
+    <textarea id="noteInput" placeholder="Enter your note"></textarea>
+    <button id="saveNoteBtn">Save Note</button>
+  </div>
+
   <%- include('layouts/footer'); %>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentDateElement = document.getElementById('currentDate');
+      const calendarContainer = document.getElementById('calendarContainer');
+      const noteModal = document.getElementById('noteModal');
+      const noteInput = document.getElementById('noteInput');
+      const saveNoteBtn = document.getElementById('saveNoteBtn');
+
+      // Display the current date
+      const currentDate = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
+
+      calendarContainer.addEventListener('click', function (event) {
+        const targetButton = event.target.closest('button');
+        if (targetButton) {
+          const currentCalendar = targetButton.closest('.calendar');
+          const month = parseInt(currentCalendar.id.replace('calendar', ''));
+          const calendarDays = document.getElementById(`calendarDays${month}`);
+
+          if (targetButton.classList.contains('prevMonthBtn')) {
+            calendarContainer.scrollTo({
+              left: calendarDays.offsetLeft - calendarContainer.clientWidth,
+              behavior: 'smooth'
+            });
+          } else if (targetButton.classList.contains('nextMonthBtn')) {
+            calendarContainer.scrollTo({
+              left: calendarDays.offsetLeft + calendarContainer.clientWidth,
+              behavior: 'smooth'
+            });
+          }
+        }
+
+        const dayElement = event.target.closest('.day');
+        if (dayElement) {
+          const date = dayElement.getAttribute('data-date');
+          const existingNote = dayElement.querySelector('.note').textContent.trim();
+          noteInput.value = existingNote;
+
+          // Display the modal
+          noteModal.style.display = 'block';
+
+          // Save note logic
+          saveNoteBtn.onclick = function () {
+            const note = noteInput.value.trim();
+            // Update the note content
+            dayElement.querySelector('.note').textContent = note;
+            // Close the modal
+            noteModal.style.display = 'none';
+          };
+        }
+      });
+    });
+  </script>
+</body>
 </html>

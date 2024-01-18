@@ -404,7 +404,7 @@ button:hover {
 table.planner  {
   border-collapse: collapse;
   width: 50%;
-  margin-top: 1pt;
+  margin-top: 100pt;
 }
 
 th.planner  {
@@ -422,7 +422,7 @@ td.planner  {
 button.planner{
   background-color: #EFECE0;
   color: black;
-  padding: 12px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -446,7 +446,7 @@ input.planner{
 }
 
 input.BigInput{
-  width:300px; 
+  width:500px; 
   height: 35px; 
   font-size:20px;
 }

@@ -143,7 +143,7 @@ input {
   box-sizing: border-box;
 }
 
-button {
+button.nutrition {
   background-color: #EFECE0;
   color: black;
   padding: 12px 20px;
@@ -282,7 +282,7 @@ ul li {
   padding: 10px 0;
 }
 
-button.nutrition {
+button.homepage {
   background-color: #EFECE0;
   color: black;
   padding: 10px 20px;

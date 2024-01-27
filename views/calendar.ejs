@@ -3,6 +3,7 @@
 <head>
   <%- include('layouts/header'); %>
   <style>
+    /* CSS */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #000;
@@ -128,19 +129,26 @@
     }
   </style>
 </head>
+<!--HTML-->
 <body>
   <%- include('layouts/navbar.ejs') %>
   <div id="currentDate"></div>
+  <!--Containers-->
   <div class="container">
     <div class="calendar-container" id="calendarContainer">
+      <!--Create a array which includes all months of a calendar year-->
       <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
       <% for (let month = 0; month < 12; month++) { %>
         <div class="calendar" id="calendar<%= month %>">
+          <!--Class to allow user to navigate through the different months-->
           <div class="month-navigation">
+            <!--clickable button to go to the previous month-->
             <button class="prevMonthBtn" data-month="<%= month %>">&lt; Prev</button>
             <div class="monthName"><%= monthNames[month] %></div>
+            <!--clickable button to go to the next month-->
             <button class="nextMonthBtn" data-month="<%= month %>">Next &gt;</button>
           </div>
+          <!--Class to define all the different days in each month-->
           <div class="days" id="calendarDays<%= month %>">
             <div>Sun</div>
             <div>Mon</div>
@@ -149,6 +157,8 @@
             <div>Thu</div>
             <div>Fri</div>
             <div>Sat</div>
+            <!--Organize where the correct day should be placed corresponding to the month-->
+            <!--Inspiration from: https://www.youtube.com/watch?v=o1yMqPyYeAo-->
             <% const firstDayOfMonth = new Date(2024, month, 1).getDay(); %>
             <% const daysInMonth = new Date(2024, month + 1, 0).getDate(); %>
             <% for (let i = 1; i <= daysInMonth + firstDayOfMonth; i++) { %>
@@ -168,15 +178,16 @@
     </div>
   </div>
 
-  <!-- Modal for adding notes -->
+  <!--Allows user to add a note for on a ceratin date-->
   <div id="noteModal" class="modal">
     <textarea id="noteInput" placeholder="Enter your note"></textarea>
     <button id="saveNoteBtn">Save Note</button>
   </div>
 
   <%- include('layouts/footer'); %>
-
   <script>
+    //JavaScript
+    // Get element id and create constants
     document.addEventListener('DOMContentLoaded', function () {
       const currentDateElement = document.getElementById('currentDate');
       const calendarContainer = document.getElementById('calendarContainer');
@@ -184,7 +195,7 @@
       const noteInput = document.getElementById('noteInput');
       const saveNoteBtn = document.getElementById('saveNoteBtn');
 
-      // Display the current date
+      // Display the current date 
       const currentDate = new Date();
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
@@ -208,7 +219,6 @@
             });
           }
         }
-
         const dayElement = event.target.closest('.day');
         if (dayElement) {
           const date = dayElement.getAttribute('data-date');

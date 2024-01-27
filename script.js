@@ -1,13 +1,7 @@
-//CALENDAR
-
-//NUTRITION
-
-//Set total calories for each meal to 0
 let totalCaloriesBreakfast = 0;
 let totalCaloriesLunch = 0;
 let totalCaloriesDinner = 0;
 
-//When the user clicks a differnt meal tab
 function changeTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.classList.remove('active');
@@ -20,9 +14,8 @@ function changeTab(tabName) {
   document.getElementById(`${tabName}Tab`).classList.add('active');
   document.querySelector(`.tabs button:contains('${tabName.charAt(0).toUpperCase() + tabName.slice(1)}')`).classList.add('active');
 }
-// Update the total calories per meal
+
 function updateDay() {
-  // Everyday, calories restart at 0
   totalCaloriesBreakfast = 0;
   totalCaloriesLunch = 0;
   totalCaloriesDinner = 0;
@@ -31,17 +24,17 @@ function updateDay() {
   update('dinner');
   changeTab('breakfast'); 
 }
-// Function for when the user want to add a meal with its number of calories
+
 function addFood(meal) {
   const foodName = document.getElementById(`${meal}FoodName`).value;
   const calories = parseFloat(document.getElementById(`${meal}Calories`).value);
-// If the food entered is a valid word and the calories entered are more than 0, add the food name
+
   if (foodName && !isNaN(calories) && calories > 0) {
     const foodList = document.getElementById(`${meal}List`);
     const listItem = document.createElement("tr");
     listItem.innerHTML = `<td>${foodName}</td><td>${calories}</td>`;
     foodList.appendChild(listItem);
-// Update meal calories
+
     if (meal === 'breakfast') {
       totalCaloriesBreakfast += calories;
       update('breakfast');
@@ -55,9 +48,7 @@ function addFood(meal) {
 
     document.getElementById(`${meal}FoodName`).value = "";
     document.getElementById(`${meal}Calories`).value = "";
-  } 
-  // Give the user an alert if food name and calories are invalid
-  else {
+  } else {
     alert("Please enter valid values for food name and calories.");
   }
 }
@@ -101,9 +92,9 @@ function calculateRecommendedCalories() {
     basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age - 161;
   }
 
-// Adjust for activity level 
+  // Adjust for activity level
   let recommendedCalories;
-// Switch statement which displays all the different options and calculations based on activity level (calculated using BMR formulas)
+
   switch (activity) {
     case 'sedentary':
       recommendedCalories = basalMetabolicRate * 1.2;
@@ -128,122 +119,3 @@ function calculateRecommendedCalories() {
   const resultElement = document.getElementById('recommendedCalories');
   resultElement.textContent = `Your recommended daily calories: ${recommendedCalories.toFixed(2)} calories`;
 }
-
-//PLANNER
-
-var rIndex, table = document.getElementById("table");
-let arr= [ ];
-
-function deleteRow(array1, row) //from array
-{
-    array1 = array1.slice(0); // make copy
-    array1.splice(row - 1, 1);
-    return array1;
-}
-
-function removeSelectedRow()//from table
-{
-                    
-    table.deleteRow(rIndex);
-
-    document.getElementById("exercise").value = "";
-    document.getElementById("sets").value = "";
-    document.getElementById("reps").value = "";
-    
-    arr=deleteRow(arr,rIndex); 
-}
-    
-function inputCheck()
-{
-    var isEmpty = false,
-                        
-    exercise = document.getElementById("exercise").value,              
-    sets = document.getElementById("sets").value,     
-    reps = document.getElementById("reps").value;
-            
-                    
-    if(exercise === ""){
-                        
-        alert("Please enter 'Exercise'.");
-        isEmpty = true;
-    }
-                    
-    else if(sets === ""|| sets<1){
-        alert("Please enter 'Sets'.");
-        isEmpty = true;
-    }
-                    
-    else if(reps === ""|| reps<1){
-        alert("Please enter 'Reps'.");
-        isEmpty = true;
-        }
-        
-        return isEmpty;
-}
-            
-             
-function addRow()
-{
-    if(!inputCheck()){
-                    
-        var newRow = table.insertRow(table.length),
-                        
-        cell1 = newRow.insertCell(0),
-        cell2 = newRow.insertCell(1),
-        cell3 = newRow.insertCell(2),
-                        
-        exercise = document.getElementById("exercise").value,
-        sets = document.getElementById("sets").value,
-        reps = document.getElementById("reps").value;
-                
-        cell1.innerHTML = exercise;
-        cell2.innerHTML = sets;
-        cell3.innerHTML = reps;
-    
-        let tempArr = [exercise,sets,reps];
-        arr.push(tempArr);
-        
-        //call the function to set the event to the new row
-        selectedRowToInput();
-    }
-             
-}
-    
-function selectedRowToInput()
-{
-                    
-    for(var i = 1; i < table.rows.length; i++)                
-    {
-
-        table.rows[i].onclick = function()
-        {
-            // get the index of the selected row
-            rIndex = this.rowIndex;
-                          
-            document.getElementById("exercise").value = this.cells[0].innerHTML;
-            document.getElementById("sets").value = this.cells[1].innerHTML;
-            document.getElementById("reps").value = this.cells[2].innerHTML;
-        };
-                    
-    }
-    
-    console.log(rIndex);
-
-}
-    
-function editSelectedRow()
-{
-    var exercise = document.getElementById("exercise").value,
-    sets = document.getElementById("sets").value,
-    reps = document.getElementById("reps").value;
-                   
-    if(!inputCheck()){
-
-    table.rows[rIndex].cells[0].innerHTML = exercise;
-    table.rows[rIndex].cells[1].innerHTML = sets;
-    table.rows[rIndex].cells[2].innerHTML = reps;
-    
-    }
-
-}
-

@@ -1,7 +1,10 @@
+<!--This is the calendar page. Users can schedule their workouts and any event using the note feature. It also displays the current date. The calendar is created in the javascript file-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <%- include('layouts/header'); %>
+
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -128,11 +131,17 @@
     }
   </style>
 </head>
+
 <body>
+
   <%- include('layouts/navbar.ejs') %>
+
   <div id="currentDate"></div>
+
   <div class="container">
+
     <div class="calendar-container" id="calendarContainer">
+
       <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
       <% for (let month = 0; month < 12; month++) { %>
         <div class="calendar" id="calendar<%= month %>">

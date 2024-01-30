@@ -177,7 +177,10 @@
   <%- include('layouts/footer'); %>
 
   <script>
+    
+    //general functionality of the calendar; navigating through, getting current date, saving notes.
     document.addEventListener('DOMContentLoaded', function () {
+
       const currentDateElement = document.getElementById('currentDate');
       const calendarContainer = document.getElementById('calendarContainer');
       const noteModal = document.getElementById('noteModal');
@@ -195,12 +198,14 @@
           const currentCalendar = targetButton.closest('.calendar');
           const month = parseInt(currentCalendar.id.replace('calendar', ''));
           const calendarDays = document.getElementById(`calendarDays${month}`);
-
+          
+          //takes you to previous month
           if (targetButton.classList.contains('prevMonthBtn')) {
             calendarContainer.scrollTo({
               left: calendarDays.offsetLeft - calendarContainer.clientWidth,
               behavior: 'smooth'
             });
+          //takes you to next month
           } else if (targetButton.classList.contains('nextMonthBtn')) {
             calendarContainer.scrollTo({
               left: calendarDays.offsetLeft + calendarContainer.clientWidth,
@@ -210,7 +215,9 @@
         }
 
         const dayElement = event.target.closest('.day');
+
         if (dayElement) {
+
           const date = dayElement.getAttribute('data-date');
           const existingNote = dayElement.querySelector('.note').textContent.trim();
           noteInput.value = existingNote;
@@ -226,7 +233,9 @@
             // Close the modal
             noteModal.style.display = 'none';
           };
+
         }
+
       });
     });
   </script>

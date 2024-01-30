@@ -2,6 +2,7 @@
 
 const date = new Date();
 
+//creates calendar
 const renderCalendar = () => {
   date.setDate(1);
 
@@ -71,6 +72,7 @@ const renderCalendar = () => {
   }
 };
 
+//navigation back and forward through months
 document.querySelector(".prev").addEventListener("click", () => {
   date.setMonth(date.getMonth() - 1);
   renderCalendar();
@@ -83,13 +85,19 @@ document.querySelector(".next").addEventListener("click", () => {
 
 renderCalendar();
 
+
+
+
 //NUTRITION
 
+//Set total calories for each meal to 0
 let totalCaloriesBreakfast = 0;
 let totalCaloriesLunch = 0;
 let totalCaloriesDinner = 0;
 
+//When the user clicks a different meal tab
 function changeTab(tabName) {
+
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.classList.remove('active');
   });
@@ -102,7 +110,11 @@ function changeTab(tabName) {
   document.querySelector(`.tabs button:contains('${tabName.charAt(0).toUpperCase() + tabName.slice(1)}')`).classList.add('active');
 }
 
+
+// Update the total calories per meal
 function updateDay() {
+
+  // Everyday, calories restart at 0
   totalCaloriesBreakfast = 0;
   totalCaloriesLunch = 0;
   totalCaloriesDinner = 0;
@@ -110,24 +122,32 @@ function updateDay() {
   update('lunch');
   update('dinner');
   changeTab('breakfast'); 
+
 }
 
+
+// Function for when the user want to add a meal with its number of calories
 function addFood(meal) {
+
   const foodName = document.getElementById(`${meal}FoodName`).value;
   const calories = parseFloat(document.getElementById(`${meal}Calories`).value);
 
+  // If the food entered is a valid word and the calories entered are more than 0, add the food name
   if (foodName && !isNaN(calories) && calories > 0) {
     const foodList = document.getElementById(`${meal}List`);
     const listItem = document.createElement("tr");
     listItem.innerHTML = `<td>${foodName}</td><td>${calories}</td>`;
     foodList.appendChild(listItem);
 
+    // Update meal calories
     if (meal === 'breakfast') {
       totalCaloriesBreakfast += calories;
       update('breakfast');
+
     } else if (meal === 'lunch') {
       totalCaloriesLunch += calories;
       update('lunch');
+
     } else if (meal === 'dinner') {
       totalCaloriesDinner += calories;
       update('dinner');
@@ -135,10 +155,15 @@ function addFood(meal) {
 
     document.getElementById(`${meal}FoodName`).value = "";
     document.getElementById(`${meal}Calories`).value = "";
-  } else {
+  } 
+
+  // Give the user an alert if food name and calories are invalid
+  else {
     alert("Please enter valid values for food name and calories.");
   }
+
 }
+
 
 function update(meal) {
   const totalCaloriesElement = document.getElementById(`${meal}TotalCalories`);
@@ -155,6 +180,7 @@ function update(meal) {
   totalCaloriesElement.textContent = totalCalories;
 }
 
+//text selector
 function contains(selector, text) {
   const elements = document.querySelectorAll(selector);
   return Array.from(elements).find(el => el.textContent.includes(text));
@@ -162,7 +188,9 @@ function contains(selector, text) {
 
 changeTab('breakfast');
 
+//Calculates the ideal recommended calories per day using the data the user has provided.
 function calculateRecommendedCalories() {
+
   // Retrieve user input values
   const age = document.getElementById('age').value;
   const weight = document.getElementById('weight').value;
@@ -179,39 +207,48 @@ function calculateRecommendedCalories() {
     basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age - 161;
   }
 
-  // Adjust for activity level
+// Adjust for activity level 
   let recommendedCalories;
-
+  
+// Switch statement which displays all the different options and calculations based on activity level (calculated using BMR formulas)
   switch (activity) {
     case 'sedentary':
       recommendedCalories = basalMetabolicRate * 1.2;
       break;
+
     case 'lightlyActive':
       recommendedCalories = basalMetabolicRate * 1.375;
       break;
+
     case 'moderatelyActive':
       recommendedCalories = basalMetabolicRate * 1.55;
       break;
+
     case 'veryActive':
       recommendedCalories = basalMetabolicRate * 1.725;
       break;
+
     case 'superActive':
       recommendedCalories = basalMetabolicRate * 1.9;
       break;
+
     default:
       recommendedCalories = basalMetabolicRate;
+
   }
 
   // Display the result
   const resultElement = document.getElementById('recommendedCalories');
   resultElement.textContent = `Your recommended daily calories: ${recommendedCalories.toFixed(2)} calories`;
+
 }
+
 
 //PLANNER
 
 var rIndex, table = document.getElementById("table"); 
 //rIndex is the variable that stores which row of the table the user clicked on
-//the table variable gets the data from the html table.
+//the table variable gets the data from the html table and is the main table shown on the page.
 
 
 let arr= [ ]; 

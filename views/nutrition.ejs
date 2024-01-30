@@ -162,8 +162,9 @@
     <%- include('layouts/footer'); %>
 
 
-    <script>
+    <script> //Please see script.js/nutrition section for this code, it has more functions and better commenting
 
+      // Function for when the user want to add a meal with its number of calories
       function addFood(mealType) {
 
         const foodNameInput = document.getElementById(`${mealType}FoodName`);
@@ -198,9 +199,10 @@
         
       }
 
-
+      //Calculates the ideal recommended calories per day using the data the user has provided.
       function calculateRecommendedCalories() {
 
+        // Retrieve user input values
         const age = parseInt(document.getElementById('age').value);
         const weight = parseInt(document.getElementById('weight').value);
         const height = parseInt(document.getElementById('height').value);

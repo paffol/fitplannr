@@ -129,7 +129,9 @@
     }
   </style>
 </head>
+
 <!--HTML-->
+
 <body>
   <%- include('layouts/navbar.ejs') %>
   <div id="currentDate"></div>
@@ -150,6 +152,7 @@
           </div>
           <!--Class to define all the different days in each month-->
           <div class="days" id="calendarDays<%= month %>">
+
             <div>Sun</div>
             <div>Mon</div>
             <div>Tue</div>
@@ -157,13 +160,16 @@
             <div>Thu</div>
             <div>Fri</div>
             <div>Sat</div>
+
             <!--Organize where the correct day should be placed corresponding to the month-->
             <!--Inspiration from: https://www.youtube.com/watch?v=o1yMqPyYeAo-->
+
             <% const firstDayOfMonth = new Date(2024, month, 1).getDay(); %>
             <% const daysInMonth = new Date(2024, month + 1, 0).getDate(); %>
             <% for (let i = 1; i <= daysInMonth + firstDayOfMonth; i++) { %>
               <% const dayOfWeek = (i - firstDayOfMonth + 6) % 7; %>
               <% if (i > firstDayOfMonth) { %>
+
                 <div class="day" data-date="<%= i - firstDayOfMonth %>">
                   <span><%= i - firstDayOfMonth %></span>
                   <div class="note"></div>
@@ -185,10 +191,14 @@
   </div>
 
   <%- include('layouts/footer'); %>
+
   <script>
+
     //JavaScript
+
     // Get element id and create constants
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () 
+    {
       const currentDateElement = document.getElementById('currentDate');
       const calendarContainer = document.getElementById('calendarContainer');
       const noteModal = document.getElementById('noteModal');

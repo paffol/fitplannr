@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <%- include('layouts/header'); %>
+<!--Class to center all items-->
 <body class="homepage centerItems">
+
     <%- include('layouts/navbar'); %>
+
     <div class="container">
         <form method = "post">
+        <!--title-->
         <h3>SIGN UP</h3>
         <div class = "form-group">
+        <!--Enter email address-->
         <lebel class="email">Email Address</lebel>
         <input
         type = "email"
@@ -17,6 +23,7 @@
         />
         </div>
         <div class="form-group">
+            <!--Enter password-->
             <lebel for="password">Password</lebel>
             <input
             type="password"
@@ -27,10 +34,13 @@
         />
         </div>
         <br />
+        <!--clickable button to sign up-->
         <button type = "submit" class="btn btn primary">Sign Up</button>
     </form>
     </div>
     
 </body>
+
 <%- include('layouts/footer'); %>
+
 </html>

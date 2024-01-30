@@ -209,15 +209,16 @@ function calculateRecommendedCalories() {
 
 //PLANNER
 
-var rIndex, table = document.getElementById("table");
-let arr= [ ];
+var rIndex, table = document.getElementById("table"); 
+//rIndex is the variable that stores which row of the table the user clicked on
+//the table variable gets the data from the html table.
 
-function deleteRow(array1, row) //from array
-{
-    array1 = array1.slice(0); // make copy
-    array1.splice(row - 1, 1);
-    return array1;
-}
+
+let arr= [ ]; 
+//This 2 dimensional array is for mirroring the data on the planner table and then save it into the database.
+
+
+//removeSelectedRow() deletes the selected row from the html table and then initiates deleteRow().
 
 function removeSelectedRow()//from table
 {
@@ -230,6 +231,19 @@ function removeSelectedRow()//from table
     
     arr=deleteRow(arr,rIndex); 
 }
+
+
+//deleteRow() allows us to delete a row from the 2d array when that same row is deleted on the html.
+
+function deleteRow(array1, row) //from array
+{
+    array1 = array1.slice(0); // makes copy
+    array1.splice(row - 1, 1);
+    return array1;
+}
+
+
+//inputCheck() checks the user input in the three input boxes(exercise, sets reps) before adding it to the html table. It ensures nothing is empty, and also that sets and reps are more than 0.
     
 function inputCheck()
 {
@@ -260,6 +274,8 @@ function inputCheck()
 }
             
              
+//addRow() first checks with inputCheck. If every input is correct, it adds the values to the html table to each of their designated columns of the row and pushes the values to the 2d array. Lastly, it calls selectedRowToInput() to call the function to set the event to the new row.
+
 function addRow()
 {
     if(!inputCheck()){
@@ -287,7 +303,9 @@ function addRow()
              
 }
     
-function selectedRowToInput()
+//selectedRowToInput() calls the function to set the event to the selected row so that the user might decide to delete or edit that selected row.
+
+function selectedRowToInput() 
 {
                     
     for(var i = 1; i < table.rows.length; i++)                
@@ -309,6 +327,9 @@ function selectedRowToInput()
 
 }
     
+
+//editSelectedRow() is initiated when the edit button is clicked. It edits the html table by changing the values of the row to the new user input values.
+
 function editSelectedRow()
 {
     var exercise = document.getElementById("exercise").value,

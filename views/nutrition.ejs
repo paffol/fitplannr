@@ -220,13 +220,16 @@
   document.getElementById('recommendedCalories').innerText = 'Recommended Calories: ' + Math.round(tdee);
 
 }
-
+      
       function calculateTotalCalories() {
+
         const breakfastTotal = calculateMealTotal('breakfastList');
         const lunchTotal = calculateMealTotal('lunchList');
         const dinnerTotal = calculateMealTotal('dinnerList');
         const totalCalories = breakfastTotal + lunchTotal + dinnerTotal;
+
         document.getElementById('totalCalories').innerText = 'Total Calories: ' + totalCalories;
+
       }
 
       function calculateMealTotal(mealListId) {
@@ -237,6 +240,7 @@
         }
         return total;
       }
+
     </script>
   </body>
 </html>

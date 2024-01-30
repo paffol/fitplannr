@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 
-<%- include('partials/header.ejs') %>
+<%- include('layouts/header.ejs') %>
 
-<body>
-  <%- include('partials/navbar.ejs') %>
-  <div class="container">
-  <h1>Welcome <%= user.name %></h1>
-  </div>
-  <a href="/users/logout" class="btn btn-secondary">Logout</a>
-  <%- include('partials/footer.ejs') %>
+<%- include('layouts/navbar.ejs') %>
+<body class="homepage centerItems">
+    <header>
+        <h1>FitPlanr</h1>
+        <h2>Your Fitness Journey Starts Here, <%= user.name %>!</h1>
+    </header>
+
+    <section id="about">
+        <h2 class="homepage-h2">About Us</h2>
+        <p>Welcome to FitPlanr, your ultimate destination for fitness enthusiasts. Discover personalized workout plans, nutrition guidance, and a wealth of health and wellness tips.</p>
+    </section>
+
+    <section id="services">
+        <h2 class="homepage-h2">Our Services</h2>
+        <ul>
+            <li>Personalized Workout Plans</li>
+            <li>Nutrition Guidance</li>
+            <li>Access to Gyms</li>
+            <li>Calender and Motivation</li>
+            <li>Health and Wellness Tips</li>
+        </ul>
+    </section>
+
+    <section id="join">
+        <h2 class="homepage-h2">Join Us Today!</h2>
+        <p>Embark on your fitness journey with fitplanr. Join our thriving community and stay motivated with personalized plans and expert guidance.</p>
+        <button onclick="window.location.href='signup.html'">Sign Up Now</button>
+    </section>
+
+  <%- include('layouts/footer.ejs') %>
 </body>
 </html>

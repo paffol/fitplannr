@@ -1,31 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
   <%- include('layouts/header'); %>
-  <body>
-    <%- include('layouts/navbar.ejs') %>
-    <div class="container">
-      <div class="calendar">
-        <div class="month">
-          <i class="fas fa-angle-left prev"></i>
-          <div class="date">
-            <h1></h1>
-            <p></p>
-          </div>
-          <i class="fas fa-angle-right next"></i>
-        </div>
-        <div class="weekdays">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </div>
-        <div class="days"></div>
-      </div>
-    </div>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
 
-  </body>
+    #currentDate {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      background-color: #000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .calendar-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    .calendar {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 2em;
+    }
+
+    .month-navigation {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+      align-items: center;
+    }
+
+    .month-navigation button {
+      background-color: #555;
+      color: #fff;
+      border: none;
+      padding: 40px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .day {
+      position: relative;
+      padding: 40px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .day:hover:not(.today) {
+      background-color: #555;
+    }
+
+    .note {
+      font-size: 0.3rem;
+      margin-top: 10px;
+      color: #fff;
+    }
+
+    .days div {
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #333;
+      padding: 100px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+    }
+
+    .modal textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .modal button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <%- include('layouts/navbar.ejs') %>
+  <div id="currentDate"></div>
+  <div class="container">
+    <div class="calendar-container" id="calendarContainer">
+      <% const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
+      <% for (let month = 0; month < 12; month++) { %>
+        <div class="calendar" id="calendar<%= month %>">
+          <div class="month-navigation">
+            <button class="prevMonthBtn" data-month="<%= month %>">&lt; Prev</button>
+            <div class="monthName"><%= monthNames[month] %></div>
+            <button class="nextMonthBtn" data-month="<%= month %>">Next &gt;</button>
+          </div>
+          <div class="days" id="calendarDays<%= month %>">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <% const firstDayOfMonth = new Date(2024, month, 1).getDay(); %>
+            <% const daysInMonth = new Date(2024, month + 1, 0).getDate(); %>
+            <% for (let i = 1; i <= daysInMonth + firstDayOfMonth; i++) { %>
+              <% const dayOfWeek = (i - firstDayOfMonth + 6) % 7; %>
+              <% if (i > firstDayOfMonth) { %>
+                <div class="day" data-date="<%= i - firstDayOfMonth %>">
+                  <span><%= i - firstDayOfMonth %></span>
+                  <div class="note"></div>
+                </div>
+              <% } else { %>
+                <div class="day"></div>
+              <% } %>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Modal for adding notes -->
+  <div id="noteModal" class="modal">
+    <textarea id="noteInput" placeholder="Enter your note"></textarea>
+    <button id="saveNoteBtn">Save Note</button>
+  </div>
+
   <%- include('layouts/footer'); %>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentDateElement = document.getElementById('currentDate');
+      const calendarContainer = document.getElementById('calendarContainer');
+      const noteModal = document.getElementById('noteModal');
+      const noteInput = document.getElementById('noteInput');
+      const saveNoteBtn = document.getElementById('saveNoteBtn');
+
+      // Display the current date
+      const currentDate = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
+
+      calendarContainer.addEventListener('click', function (event) {
+        const targetButton = event.target.closest('button');
+        if (targetButton) {
+          const currentCalendar = targetButton.closest('.calendar');
+          const month = parseInt(currentCalendar.id.replace('calendar', ''));
+          const calendarDays = document.getElementById(`calendarDays${month}`);
+
+          if (targetButton.classList.contains('prevMonthBtn')) {
+            calendarContainer.scrollTo({
+              left: calendarDays.offsetLeft - calendarContainer.clientWidth,
+              behavior: 'smooth'
+            });
+          } else if (targetButton.classList.contains('nextMonthBtn')) {
+            calendarContainer.scrollTo({
+              left: calendarDays.offsetLeft + calendarContainer.clientWidth,
+              behavior: 'smooth'
+            });
+          }
+        }
+
+        const dayElement = event.target.closest('.day');
+        if (dayElement) {
+          const date = dayElement.getAttribute('data-date');
+          const existingNote = dayElement.querySelector('.note').textContent.trim();
+          noteInput.value = existingNote;
+
+          // Display the modal
+          noteModal.style.display = 'block';
+
+          // Save note logic
+          saveNoteBtn.onclick = function () {
+            const note = noteInput.value.trim();
+            // Update the note content
+            dayElement.querySelector('.note').textContent = note;
+            // Close the modal
+            noteModal.style.display = 'none';
+          };
+        }
+      });
+    });
+  </script>
+</body>
 </html>

@@ -2,8 +2,8 @@
 <html lang="en">
 <%- include('layouts/header'); %>
 <body class="homepage centerItems">
-    <div class="containerrr">
-        <h2>LOGIN</h2>
+    <div>
+        <h1 class="h1-white">LOGIN</h2>
         <form action="/users/login" method="POST">
           <div class="form-group">
             <label for="email">Email</label>
@@ -25,9 +25,9 @@
               placeholder="Enter Password"
             />
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <button type="submit">Login</button>
         </form>
-        <p class="nav-item nav-link">
+        <p class="nav-link">
           No Account? <a href="/users/register">Register</a>
         </p>
     </div>   

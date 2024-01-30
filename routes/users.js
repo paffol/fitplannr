@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-// Load User model
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
 
@@ -17,6 +16,8 @@ router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
 
+  //push any possible errors
+
   if (!name || !email || !password || !password2) {
     errors.push({ msg: 'Please enter all fields' });
   }
@@ -25,10 +26,7 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Passwords do not match' });
   }
 
-  if (password.length < 6) {
-    errors.push({ msg: 'Password must be at least 6 characters' });
-  }
-
+  //if there are any errors the program will redirect the user back to the register page
   if (errors.length > 0) {
     res.render('register', {
       errors,
@@ -38,9 +36,9 @@ router.post('/register', (req, res) => {
       password2
     });
   } else {
+    //find email in database
     User.findOne({ email: email }).then(user => {
       if (user) {
-        errors.push({ msg: 'Email already exists' });
         res.render('register', {
           errors,
           name,
@@ -55,6 +53,7 @@ router.post('/register', (req, res) => {
           password
         });
 
+        //encrypt password for more security
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
@@ -62,10 +61,6 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
                 res.redirect('/users/login');
               })
               .catch(err => console.log(err));
@@ -88,7 +83,6 @@ router.post('/login', (req, res, next) => {
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
 

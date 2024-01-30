@@ -5,7 +5,7 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 // Welcome Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('register'));
 
-// Dashboard
+// Routes that redirect user to correct page based on the URL
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
   res.render('dashboard', {
     user: req.user
@@ -35,7 +35,5 @@ router.get('/calendar', ensureAuthenticated, (req, res) =>
     user: req.user
   })
 );
-
-
 
 module.exports = router;

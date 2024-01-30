@@ -11,6 +11,10 @@
   margin: 0;
 }
 
+.h-white{
+  color: white;
+}
+
 .nav li{
   display: inline;
 }

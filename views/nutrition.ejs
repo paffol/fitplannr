@@ -1,26 +1,17 @@
-<!--This is the nutrition page. Users can track calories and calculate recommended calories. There is a variety of calorie tracking features.-->
 <!DOCTYPE html>
 <html lang="en">
   <%- include('layouts/header'); %>
-
   <body class="homepage centerItems">
-
     <%- include('layouts/navbar.ejs') %>
-
     <div id="calories" class="user-info">
-      <!--Title-->
       <h1>Calorie Counter</h1>
-      <!--3 meal option tabs-->
       <div class="tabs">
         <button class="nutrition" onclick="changeTab('breakfast')">Breakfast</button>
         <button class="nutrition" onclick="changeTab('lunch')">Lunch</button>
         <button class="nutrition" onclick="changeTab('dinner')">Dinner</button>
       </div>
-      <!--dropdown ith all 7 days of the week as options-->
       <div class="dropdown">
-
         <label class="small-text" for="daySelect">Select Day:</label>
-
         <select id="daySelect" onchange="updateDay()">
           <option value="monday">Monday</option>
           <option value="tuesday">Tuesday</option>
@@ -30,23 +21,16 @@
           <option value="saturday">Saturday</option>
           <option value="sunday">Sunday</option>
         </select>
-
       </div>
-      <!--Breakfast-->
+
       <div id="breakfastTab" class="tab-content">
         <h2>Breakfast</h2>
-        <!--Input option for user to add food name and calories-->      
         <label class="small-text" for="breakfastFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="breakfastFoodName" placeholder="Enter food name">
-
         <label class="small-text" for="breakfastCalories">Calories:</label>
         <input class="nutrition" type="number" id="breakfastCalories" placeholder="Enter calories">
-        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('breakfast')">Add Food</button>
-
-        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="breakfastTable">
-
           <thead>
             <tr>
               <th class="small-text">Food Name</th>
@@ -56,32 +40,22 @@
           <tbody id="breakfastList"></tbody>
           <tfoot>
             <tr>
-              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="breakfastTotalCalories">0</td>
             </tr>
           </tfoot>
-
         </table>
-
       </div>
 
-      <!--Lunch-->
       <div id="lunchTab" class="tab-content">
         <h2>Lunch</h2>
-        <!--Input option for user to add food name and calories-->  
         <label class="small-text" for="lunchFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="lunchFoodName" placeholder="Enter food name">
-
         <label class="small-text" for="lunchCalories">Calories:</label>
         <input class="nutrition" type="number" id="lunchCalories" placeholder="Enter calories">
-        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('lunch')">Add Food</button>
-
-        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="lunchTable">
-
-           <thead>
+          <thead>
             <tr>
               <th class="small-text">Food Name</th>
               <th class="small-text">Calories</th>
@@ -90,7 +64,6 @@
           <tbody id="lunchList"></tbody>
           <tfoot>
             <tr>
-              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="lunchTotalCalories">0</td>
             </tr>
@@ -98,21 +71,14 @@
         </table>
       </div>
 
-      <!--Dinner-->
       <div id="dinnerTab" class="tab-content">
         <h2>Dinner</h2>
-        <!--Input option for user to add food name and calories-->  
         <label class="small-text" for="dinnerFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="dinnerFoodName" placeholder="Enter food name">
-
         <label class="small-text" for="dinnerCalories">Calories:</label>
         <input class="nutrition" type="number" id="dinnerCalories" placeholder="Enter calories">
-        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('dinner')">Add Food</button>
-
-        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="dinnerTable">
-
           <thead>
             <tr>
               <th class="small-text">Food Name</th>
@@ -122,34 +88,26 @@
           <tbody id="dinnerList"></tbody>
           <tfoot>
             <tr>
-              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="dinnerTotalCalories">0</td>
             </tr>
           </tfoot>
-
         </table>
-
       </div>
 
       <div class="user-info">
         <h2>User Information</h2>
-
         <label class="small-text" for="age">Age:</label>
         <input class="nutrition" type="number" id="age" placeholder="Enter your age">
-
         <label class="small-text" for="weight">Weight (kg):</label>
         <input class="nutrition" type="number" id="weight" placeholder="Enter your weight">
-
         <label class="small-text" for="height">Height (cm):</label>
         <input class="nutrition" type="number" id="height" placeholder="Enter your height">
-
         <label class="small-text" for="gender">Gender:</label>
         <select id="gender">
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-
         <label class="small-text" for="activity">Activity Level:</label>
         <select id="activity">
           <option value="sedentary">Sedentary (little or no exercise)</option>
@@ -158,23 +116,13 @@
           <option value="veryActive">Very Active (hard exercise/sports 6-7 days a week)</option>
           <option value="superActive">Super Active (very hard exercise/sports & physical job or 2x training)</option>
         </select>
-
         <button class="nutrition" onclick="calculateRecommendedCalories()">Calculate Recommended Calories</button>
-
         <p id="recommendedCalories"></p>
-
       </div>
-
     </div>
 
-    <%- include('layouts/footer'); %>
-
-
-    <script> //Please see script.js/nutrition section for this code, it has more functions and better commenting
-
-      // Function for when the user want to add a meal with its number of calories
+    <script>
       function addFood(mealType) {
-
         const foodNameInput = document.getElementById(`${mealType}FoodName`);
         const caloriesInput = document.getElementById(`${mealType}Calories`);
         const mealTable = document.getElementById(`${mealType}Table`);
@@ -185,7 +133,6 @@
         const calories = parseInt(caloriesInput.value);
 
         if (foodName && !isNaN(calories) && calories > 0) {
-
           const row = mealList.insertRow(mealList.rows.length - 1);
           const cell1 = row.insertCell(0);
           const cell2 = row.insertCell(1);
@@ -204,89 +151,70 @@
         } else {
           alert('Please enter valid values for food name and calories.');
         }
-        
       }
 
-      //Calculates the ideal recommended calories per day using the data the user has provided.
       function calculateRecommendedCalories() {
+  const age = parseInt(document.getElementById('age').value);
+  const weight = parseInt(document.getElementById('weight').value);
+  const height = parseInt(document.getElementById('height').value);
+  const gender = document.getElementById('gender').value;
+  const activity = document.getElementById('activity').value;
 
-        // Retrieve user input values
-        const age = parseInt(document.getElementById('age').value);
-        const weight = parseInt(document.getElementById('weight').value);
-        const height = parseInt(document.getElementById('height').value);
-        const gender = document.getElementById('gender').value;
-        const activity = document.getElementById('activity').value;
+  // Harris-Benedict equation to calculate Basal Metabolic Rate (BMR)
+  let bmr = 0;
 
-        // Harris-Benedict equation to calculate Basal Metabolic Rate (BMR)
-        let bmr = 0;
+  if (gender === 'male') {
+    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+  } else if (gender === 'female') {
+    bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+  }
 
-        if (gender === 'male') {
-          bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+  // Total Daily Energy Expenditure (TDEE) based on activity level
+  let tdee = 0;
 
-        } else if (gender === 'female') {
-          bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-        }
+  switch (activity) {
+    case 'sedentary':
+      tdee = bmr * 1.2;
+      break;
+    case 'lightlyActive':
+      tdee = bmr * 1.375;
+      break;
+    case 'moderatelyActive':
+      tdee = bmr * 1.55;
+      break;
+    case 'veryActive':
+      tdee = bmr * 1.725;
+      break;
+    case 'superActive':
+      tdee = bmr * 1.9;
+      break;
+    default:
+      break;
+  }
 
-        // Total Daily Energy Expenditure (TDEE) based on activity level
-        let tdee = 0;
-        
-        switch (activity) {
+  // Display the result
 
-          case 'sedentary':
-            tdee = bmr * 1.2;
-            break;
-
-          case 'lightlyActive':
-            tdee = bmr * 1.375;
-            break;
-
-          case 'moderatelyActive':
-            tdee = bmr * 1.55;
-            break;
-
-          case 'veryActive':
-            tdee = bmr * 1.725;
-            break;
-
-          case 'superActive':
-            tdee = bmr * 1.9;
-            break;
-
-          default:
-            break;
-
-          }
-
-        // Display the result
-        document.getElementById('recommendedCalories').innerText = 'Recommended Calories: ' + Math.round(tdee);
+  document.getElementById('recommendedCalories').innerText = 'Recommended Calories: ' + Math.round(tdee);
 
 }
-      //calculates total calories for the day and displays it each time the user updates data.
-      function calculateTotalCalories() {
 
+      function calculateTotalCalories() {
         const breakfastTotal = calculateMealTotal('breakfastList');
         const lunchTotal = calculateMealTotal('lunchList');
         const dinnerTotal = calculateMealTotal('dinnerList');
         const totalCalories = breakfastTotal + lunchTotal + dinnerTotal;
-
         document.getElementById('totalCalories').innerText = 'Total Calories: ' + totalCalories;
       }
-      
-      //calculates total calories for each meal.
+
       function calculateMealTotal(mealListId) {
-
         const mealList = document.getElementById(mealListId);
-
         let total = 0;
-
         for (let i = 0; i < mealList.rows.length - 1; i++) {
           total += parseInt(mealList.rows[i].cells[1].innerText);
         }
-
         return total;
       }
-
     </script>
-
   </body>
+  <%- include('layouts/footer'); %>
 </html>

@@ -2,38 +2,37 @@
 <html lang="en">
 <%- include('layouts/header'); %>
 <body class="homepage centerItems">
-    <%- include('layouts/navbar'); %>
-    <div class="container">
-        <form method = "post">
-        <!--Title-->
-        <h2>LOGIN</h2>
-        <!--variables for email-->
-        <div class = "form-group">
-        <lebel class="email">Email Address</lebel>
-        <input
-        type = "email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Enter email"
-        />
-        </div>
-        <!--variables for password-->
-        <div class="form-group">
-            <lebel for="password">Password</lebel>
+    <div>
+      <!--Title-->
+        <h1 class="h1-white">LOGIN</h2>
+        <form action="/users/login" method="POST">
+          <!--variables for email-->
+          <div class="form-group">
+            <label for="email">Email</label>
             <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="Enter password"
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+          <!--variables for password-->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter Password"
             />
           </div>
           <!--Button to sign up-->
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <button type="submit">Login</button>
         </form>
-        <!--Link, leads to Sign Up page once clicked-->
-        <p class="nav-item nav-link">
+        <p class="nav-link">
+          <!--Link, leads to Sign Up page once clicked-->
           No Account? <a href="/users/register">Register</a>
         </p>
     </div>   

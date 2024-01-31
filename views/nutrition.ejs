@@ -4,12 +4,15 @@
   <body class="homepage centerItems">
     <%- include('layouts/navbar.ejs') %>
     <div id="calories" class="user-info">
+      <!--Title-->
       <h1>Calorie Counter</h1>
+      <!--3 tabs, one for each meal-->
       <div class="tabs">
         <button class="nutrition" onclick="changeTab('breakfast')">Breakfast</button>
         <button class="nutrition" onclick="changeTab('lunch')">Lunch</button>
         <button class="nutrition" onclick="changeTab('dinner')">Dinner</button>
       </div>
+      <!--Dropdown for each day of the week-->
       <div class="dropdown">
         <label class="small-text" for="daySelect">Select Day:</label>
         <select id="daySelect" onchange="updateDay()">
@@ -22,14 +25,18 @@
           <option value="sunday">Sunday</option>
         </select>
       </div>
-
+      <!--Breakfast-->
       <div id="breakfastTab" class="tab-content">
+        <!--Title-->
         <h2>Breakfast</h2>
+        <!--Options to add food and calories-->
         <label class="small-text" for="breakfastFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="breakfastFoodName" placeholder="Enter food name">
         <label class="small-text" for="breakfastCalories">Calories:</label>
         <input class="nutrition" type="number" id="breakfastCalories" placeholder="Enter calories">
+        <!--Clickable button to add the requested food item and calories-->
         <button class="nutrition" onclick="addFood('breakfast')">Add Food</button>
+        <!--Table to display the food item and calories for breakfast-->
         <table class="nutrition" id="breakfastTable">
           <thead>
             <tr>
@@ -40,6 +47,7 @@
           <tbody id="breakfastList"></tbody>
           <tfoot>
             <tr>
+              <!--Display total breakfast calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="breakfastTotalCalories">0</td>
             </tr>
@@ -47,79 +55,95 @@
         </table>
       </div>
 
-      <div id="lunchTab" class="tab-content">
-        <h2>Lunch</h2>
-        <label class="small-text" for="lunchFoodName">Food Name:</label>
-        <input class="nutrition" type="text" id="lunchFoodName" placeholder="Enter food name">
-        <label class="small-text" for="lunchCalories">Calories:</label>
-        <input class="nutrition" type="number" id="lunchCalories" placeholder="Enter calories">
-        <button class="nutrition" onclick="addFood('lunch')">Add Food</button>
-        <table class="nutrition" id="lunchTable">
-          <thead>
-            <tr>
-              <th class="small-text">Food Name</th>
-              <th class="small-text">Calories</th>
-            </tr>
-          </thead>
-          <tbody id="lunchList"></tbody>
-          <tfoot>
-            <tr>
-              <td><strong>Total Calories:</strong></td>
-              <td id="lunchTotalCalories">0</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+<!--Lunch-->
+<div id="lunchTab" class="tab-content">
+  <!--Title-->
+  <h2>Lunch</h2>
+  <!--Options to add food and calories-->
+  <label class="small-text" for="lunchFoodName">Food Name:</label>
+  <input class="nutrition" type="text" id="lunchFoodName" placeholder="Enter food name">
+  <label class="small-text" for="lunchCalories">Calories:</label>
+  <input class="nutrition" type="number" id="lunchCalories" placeholder="Enter calories">
+  <!--Clickable button to add the requested food item and calories-->
+  <button class="nutrition" onclick="addFood('lunch')">Add Food</button>
+  <!--Table to display the food item and calories for lunch-->
+  <table class="nutrition" id="lunchTable">
+    <thead>
+      <tr>
+        <th class="small-text">Food Name</th>
+        <th class="small-text">Calories</th>
+      </tr>
+    </thead>
+    <tbody id="lunchList"></tbody>
+    <tfoot>
+      <tr>
+        <!--Display total lunch calories-->
+        <td><strong>Total Calories:</strong></td>
+        <td id="lunchTotalCalories">0</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<!--Dinner-->
+<div id="dinnerTab" class="tab-content">
+  <!--Title-->
+  <h2>Dinner</h2>
+  <!--Options to add food and calories-->
+  <label class="small-text" for="dinnerFoodName">Food Name:</label>
+  <input class="nutrition" type="text" id="dinnerFoodName" placeholder="Enter food name">
+  <label class="small-text" for="dinnerCalories">Calories:</label>
+  <input class="nutrition" type="number" id="dinnerCalories" placeholder="Enter calories">
+  <!--Clickable button to add the requested food item and calories-->
+  <button class="nutrition" onclick="addFood('dinner')">Add Food</button>
+  <!--Table to display the food item and calories for dinner-->
+  <table class="nutrition" id="dinnerTable">
+    <thead>
+      <tr>
+        <th class="small-text">Food Name</th>
+        <th class="small-text">Calories</th>
+      </tr>
+    </thead>
+    <tbody id="dinnerList"></tbody>
+    <tfoot>
+      <tr>
+        <!--Display total dinner calories-->
+        <td><strong>Total Calories:</strong></td>
+        <td id="dinnerTotalCalories">0</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<!--User information-->
+<div class="user-info">
+  <!--Title-->
+  <h2>User Information</h2>
+  <!--4 user inputs to get users physical attributes and age-->
+  <label class="small-text" for="age">Age:</label>
+  <input class="nutrition" type="number" id="age" placeholder="Enter your age">
+  <label class="small-text" for="weight">Weight (kg):</label>
+  <input class="nutrition" type="number" id="weight" placeholder="Enter your weight">
+  <label class="small-text" for="height">Height (cm):</label>
+  <input class="nutrition" type="number" id="height" placeholder="Enter your height">
+  <label class="small-text" for="gender">Gender:</label>
+  <select id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <!--Activity level options for users to select which best represents their weekly activity levels-->
+  <label class="small-text" for="activity">Activity Level:</label>
+  <select id="activity">
+    <option value="sedentary">Sedentary (little or no exercise)</option>
+    <option value="lightlyActive">Lightly Active (light exercise/sports 1-3 days/week)</option>
+    <option value="moderatelyActive">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+    <option value="veryActive">Very Active (hard exercise/sports 6-7 days a week)</option>
+    <option value="superActive">Super Active (very hard exercise/sports & physical job or 2x training)</option>
+  </select>
+  <!--Clickable button to give user their recomended daily calories to maintain current bodyweight-->
+  <button class="nutrition" onclick="calculateRecommendedCalories()">Calculate Recommended Calories</button>
+  <p id="recommendedCalories"></p>
+</div>
+</div>
 
-      <div id="dinnerTab" class="tab-content">
-        <h2>Dinner</h2>
-        <label class="small-text" for="dinnerFoodName">Food Name:</label>
-        <input class="nutrition" type="text" id="dinnerFoodName" placeholder="Enter food name">
-        <label class="small-text" for="dinnerCalories">Calories:</label>
-        <input class="nutrition" type="number" id="dinnerCalories" placeholder="Enter calories">
-        <button class="nutrition" onclick="addFood('dinner')">Add Food</button>
-        <table class="nutrition" id="dinnerTable">
-          <thead>
-            <tr>
-              <th class="small-text">Food Name</th>
-              <th class="small-text">Calories</th>
-            </tr>
-          </thead>
-          <tbody id="dinnerList"></tbody>
-          <tfoot>
-            <tr>
-              <td><strong>Total Calories:</strong></td>
-              <td id="dinnerTotalCalories">0</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <div class="user-info">
-        <h2>User Information</h2>
-        <label class="small-text" for="age">Age:</label>
-        <input class="nutrition" type="number" id="age" placeholder="Enter your age">
-        <label class="small-text" for="weight">Weight (kg):</label>
-        <input class="nutrition" type="number" id="weight" placeholder="Enter your weight">
-        <label class="small-text" for="height">Height (cm):</label>
-        <input class="nutrition" type="number" id="height" placeholder="Enter your height">
-        <label class="small-text" for="gender">Gender:</label>
-        <select id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-        <label class="small-text" for="activity">Activity Level:</label>
-        <select id="activity">
-          <option value="sedentary">Sedentary (little or no exercise)</option>
-          <option value="lightlyActive">Lightly Active (light exercise/sports 1-3 days/week)</option>
-          <option value="moderatelyActive">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
-          <option value="veryActive">Very Active (hard exercise/sports 6-7 days a week)</option>
-          <option value="superActive">Super Active (very hard exercise/sports & physical job or 2x training)</option>
-        </select>
-        <button class="nutrition" onclick="calculateRecommendedCalories()">Calculate Recommended Calories</button>
-        <p id="recommendedCalories"></p>
-      </div>
-    </div>
 
     <script>
       function addFood(mealType) {

@@ -8,15 +8,15 @@
     <%- include('layouts/navbar.ejs') %>
 
     <div id="calories" class="user-info">
-
+      <!--Title-->
       <h1>Calorie Counter</h1>
-
+      <!--3 meal option tabs-->
       <div class="tabs">
         <button class="nutrition" onclick="changeTab('breakfast')">Breakfast</button>
         <button class="nutrition" onclick="changeTab('lunch')">Lunch</button>
         <button class="nutrition" onclick="changeTab('dinner')">Dinner</button>
       </div>
-
+      <!--dropdown ith all 7 days of the week as options-->
       <div class="dropdown">
 
         <label class="small-text" for="daySelect">Select Day:</label>
@@ -32,19 +32,19 @@
         </select>
 
       </div>
-
+      <!--Breakfast-->
       <div id="breakfastTab" class="tab-content">
         <h2>Breakfast</h2>
-
+        <!--Input option for user to add food name and calories-->      
         <label class="small-text" for="breakfastFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="breakfastFoodName" placeholder="Enter food name">
 
         <label class="small-text" for="breakfastCalories">Calories:</label>
         <input class="nutrition" type="number" id="breakfastCalories" placeholder="Enter calories">
-
+        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('breakfast')">Add Food</button>
 
-
+        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="breakfastTable">
 
           <thead>
@@ -56,6 +56,7 @@
           <tbody id="breakfastList"></tbody>
           <tfoot>
             <tr>
+              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="breakfastTotalCalories">0</td>
             </tr>
@@ -65,19 +66,22 @@
 
       </div>
 
+      <!--Lunch-->
       <div id="lunchTab" class="tab-content">
         <h2>Lunch</h2>
-
+        <!--Input option for user to add food name and calories-->  
         <label class="small-text" for="lunchFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="lunchFoodName" placeholder="Enter food name">
 
         <label class="small-text" for="lunchCalories">Calories:</label>
         <input class="nutrition" type="number" id="lunchCalories" placeholder="Enter calories">
-
+        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('lunch')">Add Food</button>
-        
+
+        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="lunchTable">
-          <thead>
+
+           <thead>
             <tr>
               <th class="small-text">Food Name</th>
               <th class="small-text">Calories</th>
@@ -86,6 +90,7 @@
           <tbody id="lunchList"></tbody>
           <tfoot>
             <tr>
+              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="lunchTotalCalories">0</td>
             </tr>
@@ -93,18 +98,19 @@
         </table>
       </div>
 
+      <!--Dinner-->
       <div id="dinnerTab" class="tab-content">
         <h2>Dinner</h2>
-
+        <!--Input option for user to add food name and calories-->  
         <label class="small-text" for="dinnerFoodName">Food Name:</label>
         <input class="nutrition" type="text" id="dinnerFoodName" placeholder="Enter food name">
 
         <label class="small-text" for="dinnerCalories">Calories:</label>
         <input class="nutrition" type="number" id="dinnerCalories" placeholder="Enter calories">
-
+        <!--button to add and calculate the food name and calories-->
         <button class="nutrition" onclick="addFood('dinner')">Add Food</button>
 
-
+        <!--Display the food name and calories of each seperate food item-->
         <table class="nutrition" id="dinnerTable">
 
           <thead>
@@ -116,6 +122,7 @@
           <tbody id="dinnerList"></tbody>
           <tfoot>
             <tr>
+              <!--Display total calories-->
               <td><strong>Total Calories:</strong></td>
               <td id="dinnerTotalCalories">0</td>
             </tr>

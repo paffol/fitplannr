@@ -102,7 +102,7 @@ function removeSelectedRow()//from table
 }
 
 
-//deleteRow() allows us to delete a row from the 2d array when that same row is deleted on the html.
+//deleteRow() allows us to delete a row from the 2d array(that was supposed to be connected to the database) when that same row is deleted on the html.
 
 function deleteRow(array1, row) //from array
 {
@@ -148,7 +148,8 @@ function inputCheck()
 function addRow()
 {
     if(!inputCheck()){//check input before proceeding
-                    
+        
+        //creates new row for the new data
         var newRow = table.insertRow(table.length),
                         
         cell1 = newRow.insertCell(0),
@@ -208,6 +209,7 @@ function editSelectedRow()
                    
     if(!inputCheck()){//check input before proceeding
 
+    //replace data
     table.rows[rIndex].cells[0].innerHTML = exercise;
     table.rows[rIndex].cells[1].innerHTML = sets;
     table.rows[rIndex].cells[2].innerHTML = reps;

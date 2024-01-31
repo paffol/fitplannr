@@ -254,7 +254,7 @@
         document.getElementById('recommendedCalories').innerText = 'Recommended Calories: ' + Math.round(tdee);
 
 }
-
+      //calculates total calories for the day and displays it each time the user updates data.
       function calculateTotalCalories() {
 
         const breakfastTotal = calculateMealTotal('breakfastList');
@@ -264,7 +264,8 @@
 
         document.getElementById('totalCalories').innerText = 'Total Calories: ' + totalCalories;
       }
-
+      
+      //calculates total calories for each meal.
       function calculateMealTotal(mealListId) {
 
         const mealList = document.getElementById(mealListId);
